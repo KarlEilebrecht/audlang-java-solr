@@ -1,0 +1,38 @@
+//@formatter:off
+/*
+ * PolicyCreator
+ * Copyright 2025 Karl Eilebrecht
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"):
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+//@formatter:on
+
+package de.calamanari.adl.solr.config;
+
+import java.io.Serializable;
+
+/**
+ * An {@link AutoMappingPolicyCreator} takes the nodeType along with the document nature to create a custom {@link AutoMappingPolicy} instance.
+ * 
+ * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
+ */
+public interface AutoMappingPolicyCreator extends Serializable {
+
+    /**
+     * @param nodeType the Solr document type this policy is being created for
+     * @param documentNature nature of the document related to this node type
+     * @return auto-mapping policy
+     */
+    AutoMappingPolicy createPolicy(String nodeType, SolrDocumentNature documentNature);
+
+}

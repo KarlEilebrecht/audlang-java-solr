@@ -1,0 +1,56 @@
+# This workflow will build and deploy an existing release (tag) of a Java-project with Maven
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow requires the release tag as parameter.
+# The idea is that we can take a selected release previously created on github, build it, 
+# sign the artifacts and publish them to Maven Central
+
+
+name: Deploy to Maven Central CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseTag:
+        description: "Release tag to be deployed."
+        required: true
+        default: "vA.B.C"
+
+jobs:
+
+  deploy-central:
+
+    permissions:
+      contents: write
+      pages: write
+      packages: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.releaseTag }}
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Deploy artifacts with Maven
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -P mavenCentral -B deploy -DskipTests
+      env:
+      
+        # Credentials for downloading required artifacts from github packages
+        USER_NAME: ${{ secrets.PAT_RO_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_RO_TOKEN }}
+        
+        # Settings for jar-signing with https://www.simplify4u.org/sign-maven-plugin/
+        SIGN_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        SIGN_KEY: ${{ secrets.GPG_SIGNING_SECRET }}
+        SIGN_KEY_PASS: ${{ secrets.GPG_SIGNING_PASSPHRASE }}        
+
+        # Credentials for upload to Maven Central        
+        MAVEN_CENTRAL_USERNAME: ${{ secrets.CENTRAL_OSSRH_USER }}
+        MAVEN_CENTRAL_PASSWORD: ${{ secrets.CENTRAL_OSSRH_TOKEN }}

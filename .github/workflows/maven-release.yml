@@ -1,0 +1,57 @@
+# This workflow will build a release of a Java-project with Maven
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow requires two input parameters, the development version and the intended release version.
+
+
+name: Release CI with Maven
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to checkout to build the release."
+        required: true
+        default: "main"
+      releaseVersion:
+        description: "Version to apply when preparing a release or a branch."
+        required: true
+        default: "A.B.C"
+      developmentVersion:
+        description: "Snapshot version to apply to new local working copy."
+        required: true
+        default: "A.B.D-SNAPSHOT"
+
+jobs:
+
+  release:
+
+    permissions:
+      contents: write
+      pages: write
+      packages: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Configure Git user
+      run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"      
+
+    - name: Create Maven Release
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=${{ inputs.releaseVersion }} -DdevelopmentVersion=${{ inputs.developmentVersion }}
+      env:
+        # Runs with a personal access token for download and upload
+        USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_PKG_WRITE_TOKEN }}

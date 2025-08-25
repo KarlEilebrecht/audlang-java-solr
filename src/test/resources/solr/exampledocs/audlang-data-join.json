@@ -1,0 +1,1099 @@
+[
+    {
+        "id": "19011",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "country": "USA",
+        "demcode": 7,
+        "omscore": 1723.9,
+        "updtime": "2024-09-24T17:38:21Z",
+        "upddate": "2024-09-24T00:00:00Z",
+        "tntcode": 2,
+        "bstate": true,
+        "scode": 89,
+        "bicode": 198234523,
+        "flt_sports_ss": [
+            "tennis",
+            "football"
+        ],
+        "flt_sizecm_i": 178,
+        "flt_bodytempcelsius_d": 38.9,
+        "flt_anniversarydate_dt": "2024-09-20T00:00:00Z",
+        "flt_clubmember_b": true
+    },
+    {
+        "id": "19012",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "demcode": 9,
+        "gender": "male",
+        "omscore": 8765.9,
+        "updtime": "2024-09-25T11:38:21Z",
+        "upddate": "2024-09-25T00:00:00Z",
+        "ncode": 2031122.13,
+        "flt_sports_ss": [
+            "tennis"
+        ],
+        "flt_hobbies_ss": [
+            "train-spotting",
+            "origami"
+        ],
+        "flt_sizecm_i": 172,
+        "flt_bodytempcelsius_d": 37.3,
+        "flt_anniversarydate_dt": "2023-03-31T00:00:00Z"
+    },
+    {
+        "id": "19013",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "country": "USA",
+        "city": "Denver",
+        "demcode": 8,
+        "gender": "female",
+        "omscore": 1265.3,
+        "updtime": "2024-09-24T11:38:21Z",
+        "upddate": "2024-09-24T00:00:00Z",
+        "tntcode": 3,
+        "bstate": false,
+        "scode": 34,
+        "bicode": 18726323,
+        "ncode": 5631124.49,
+        "flt_hobbies_ss": [
+            "origami"
+        ],
+        "flt_sizecm_i": 178,
+        "flt_bodytempcelsius_d": 38.7,
+        "flt_anniversarydate_dt": "2024-09-25T00:00:00Z",
+        "flt_clubmember_b": true
+    },
+    {
+        "id": "19014",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "country": "Germany",
+        "demcode": 8,
+        "gender": "female",
+        "omscore": 265.3,
+        "updtime": "2024-09-25T20:38:00Z",
+        "upddate": "2024-09-25T00:00:00Z",
+        "tntcode": 3,
+        "bstate": true,
+        "scode": 17,
+        "flt_sports_ss": [
+            "football",
+            "basketball"
+        ],
+        "flt_sizecm_i": 192,
+        "flt_clubmember_b" : false
+    },
+    {
+        "id": "19015",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "country": "UK",
+        "city": "London",
+        "demcode": 9,
+        "gender": "male",
+        "omscore": 8265.3,
+        "updtime": "2024-09-27T19:38:01Z",
+        "upddate": "2024-09-27T00:00:00Z",
+        "tntcode": 5,
+        "bicode": 8812713,
+        "ncode": 19273213.21,
+        "flt_clubmember_b" : true
+    },
+    {
+        "id": "19016",
+        "node_type": "profile",
+        "provider": "LOGMOTH",
+        "country": "UK",
+        "city": "London",
+        "demcode": 9,
+        "gender": "diverse",
+        "omscore": 3214.9,
+        "updtime": "2024-09-27T19:38:01Z",
+        "upddate": "2024-09-27T00:00:00Z",
+        "tntcode": 2,
+        "bstate": false,
+        "scode": 11,
+        "bicode": 8812731,
+        "ncode": 19273213.21,
+        "flt_sports_ss": [
+            "tennis",
+            "football",
+            "basketball"
+        ],
+        "flt_hobbies_ss": [
+            "train-spotting"
+        ],
+        "flt_sizecm_i": 176,
+        "flt_bodytempcelsius_d": 37.5,
+        "flt_anniversarydate_dt": "2024-12-24T00:00:00Z",
+        "flt_clubmember_b" : false
+    },
+    {
+        "id": "19017",
+        "node_type": "profile",
+        "provider": "ZOMBEE",
+        "country": "France",
+        "demcode": 11,
+        "gender": "female",
+        "omscore": 1114.5,
+        "updtime": "2024-09-30T14:34:09Z",
+        "upddate": "2024-09-30T00:00:00Z",
+        "tntcode": 6,
+        "bstate": true,
+        "scode": 17,
+        "bicode": 6612732,
+        "ncode": 73213.99,
+        "flt_sports_ss": [
+            "hiking"
+        ],
+        "flt_hobbies_ss": [
+            "knitting",
+            "origami"
+        ],
+        "flt_clubmember_b": true
+    },
+    {
+        "id": "19018",
+        "node_type": "profile",
+        "provider": "ZOMBEE",
+        "country": "France",
+        "city": "Paris",
+        "demcode": 11,
+        "gender": "male",
+        "omscore": 55514.5,
+        "updtime": "2024-09-30T14:34:01Z",
+        "upddate": "2024-09-30T00:00:00Z",
+        "tntcode": 6,
+        "bstate": true,
+        "scode": 11,
+        "bicode": 5512831,
+        "ncode": 23732131.87
+    },
+    {
+        "id": "19019",
+        "node_type": "profile",
+        "provider": "CLCPRO",
+        "country": "USA",
+        "city": "Chicago",
+        "demcode": 7,
+        "omscore": 5723.6,
+        "updtime": "2024-06-11T13:38:20Z",
+        "upddate": "2024-06-11T00:00:00Z",
+        "tntcode": 2
+    },
+    {
+        "id": "19020",
+        "node_type": "profile",
+        "provider": "CLCPRO",
+        "country": "USA",
+        "city": "Chicago",
+        "demcode": 5,
+        "gender": "male",
+        "omscore": 6623.4,
+        "updtime": "2024-06-11T13:50:01Z",
+        "upddate": "2024-06-11T00:00:00Z",
+        "tntcode": 2
+    },
+    {
+        "id": "19021",
+        "node_type": "profile",
+        "provider": "CLCPRO",
+        "country": "USA",
+        "city": "Chicago",
+        "demcode": 7,
+        "omscore": 5723.6,
+        "updtime": "2024-06-11T13:50:20Z",
+        "upddate": "2024-06-11T00:00:00Z",
+        "tntcode": 2,
+        "flt_sports_ss": [
+            "baseball",
+            "football"
+        ],
+        "flt_sizecm_i": 188,
+        "flt_bodytempcelsius_d": 38.9,
+        "flt_anniversarydate_dt": "2024-12-01T00:00:00Z",
+        "flt_clubmember_b": true
+    },
+    {
+        "id": "fct_19011_1",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": true
+    },
+    {
+        "id": "fct_19011_2",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hasdog_b": true
+    },
+    {
+        "id": "fct_19011_3",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hascat_b": false
+    },
+    {
+        "id": "fct_19011_4",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hasbird_b": false
+    },
+    {
+        "id": "fact_19011_5",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_dateofbirth_dt": "2000-03-05T00:00:00Z"
+    },
+    {
+        "id": "fct_19011_6",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_yearofbirth_i": 2000
+    },
+    {
+        "id": "fct_19011_7",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2023-12-24T19:36:12Z",
+            "2024-02-28T17:11:25Z",
+            "2024-07-21T16:31:03Z",
+            "2024-07-21T23:01:17Z",
+            "2024-12-19T10:18:19Z",
+            "2024-12-22T02:48:07Z"
+        ]
+    },
+    {
+        "id": "fct_19011_8",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX89"
+        ]
+    },
+    {
+        "id": "fct_19011_9",
+    	"main_id" : "19011",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.9871621
+    },
+    {
+        "id": "fct_19012_1",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": true
+    },
+    {
+        "id": "fct_19012_2",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hasdog_b": false
+    },
+    {
+        "id": "fct_19012_6",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_yearofbirth_i": 2000
+    },
+    {
+        "id": "fct_19012_7",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2024-03-29T12:15:21Z",
+            "2024-08-21T19:32:13Z",
+            "2024-08-21T22:11:14Z",
+            "2024-12-22T10:18:16Z",
+            "2024-12-22T12:48:12Z"
+        ]
+    },
+    {
+        "id": "fct_19012_8",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX11"
+        ]
+    },
+    {
+        "id": "fct_19012_9",
+    	"main_id" : "19012",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.621761235
+    },
+    {
+        "id": "fct_19013_7",
+    	"main_id" : "19013",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2024-12-21T23:41:06Z"
+        ]
+    },
+    {
+        "id": "fct_19013_8",
+    	"main_id" : "19013",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX89"
+        ]
+    },
+    {
+        "id": "fct_19013_9",
+    	"main_id" : "19013",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.1871623
+    },
+    {
+        "id": "fct_19014_1",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": true
+    },
+    {
+        "id": "fct_19014_2",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hascat_b": true
+    },
+    {
+        "id": "fct_19014_3",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hasbird_b": true
+    },
+    {
+        "id": "fact_19014_5",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_dateofbirth_dt": "2004-07-15T00:00:00Z"
+    },
+    {
+        "id": "fct_19014_6",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_yearofbirth_i": 2004
+    },
+    {
+        "id": "fct_19014_7",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2024-09-21T21:02:04Z",
+            "2024-10-17T11:16:21Z",
+            "2024-11-30T06:59:41Z"
+        ]
+    },
+    {
+        "id": "fct_19014_8",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX16"
+        ]
+    },
+    {
+        "id": "fct_19014_9",
+    	"main_id" : "19014",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.8171633
+    },
+    {
+        "id": "fct_19015_1",
+    	"main_id" : "19015",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": false
+    },
+    {
+        "id": "fct_19015_6",
+    	"main_id" : "19015",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_yearofbirth_i": 2000
+    },
+    {
+        "id": "fct_19016_1",
+    	"main_id" : "19016",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": true
+    },
+    {
+        "id": "fct_19016_2",
+    	"main_id" : "19016",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_hasdog_b": true
+    },
+    {
+        "id": "fct_19016_9",
+    	"main_id" : "19016",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.4871632
+    },
+    {
+        "id": "fct_19018_1",
+    	"main_id" : "19018",
+        "node_type": "fact",
+        "fct_provider_s": "ZOMBEE",
+        "fct_cinema_b": true
+    },
+    {
+        "id": "fct_19018_2",
+    	"main_id" : "19018",
+        "node_type": "fact",
+        "fct_provider_s": "ZOMBEE",
+        "fct_video_b": true
+    },
+    {
+        "id": "fct_19018_3",
+    	"main_id" : "19018",
+        "node_type": "fact",
+        "fct_provider_s": "ZOMBEE",
+        "fct_xscore_d": 0.7871687
+    },
+    {
+        "id": "fct_19019_1",
+    	"main_id" : "19018",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": true
+    },
+    {
+        "id": "fact_19019_2",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_dateofbirth_dt": "2003-08-01T00:00:00Z"
+    },
+    {
+        "id": "fct_19019_3",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_yearofbirth_i": 2003
+    },
+    {
+        "id": "fct_19019_4",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_homecity_s": "Denver"
+    },
+    {
+        "id": "fct_19019_5",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2024-10-19T12:18:37Z"
+        ]
+    },
+    {
+        "id": "fct_19019_8",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX90"
+        ]
+    },
+    {
+        "id": "fct_19019_9",
+    	"main_id" : "19019",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.9871621
+    },
+    {
+        "id": "fct_19020_1",
+    	"main_id" : "19020",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_haspet_b": false
+    },
+    {
+        "id": "fct_19020_4",
+    	"main_id" : "19020",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_homecity_s": "Chicago"
+    },
+    {
+        "id": "fct_19020_5",
+    	"main_id" : "19020",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contacttime_dts": [
+            "2024-10-19T13:17:41Z"
+        ]
+    },
+    {
+        "id": "fct_19020_8",
+    	"main_id" : "19020",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_contactcode_ss": [
+            "RX90"
+        ]
+    },
+    {
+        "id": "fct_19020_9",
+    	"main_id" : "19020",
+        "node_type": "fact",
+        "fct_provider_s": "CLCPRO",
+        "fct_xscore_d": 0.7871633
+    },
+    {
+        "id": "srv_19011_1",
+    	"main_id" : "19011",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_monthlyincome_i": 4600,
+        "srv_monthlyspending_i": 5000,
+        "srv_martialstatus_s": "married",
+        "srv_children_i": 1,
+        "srv_favcolor_ss": [
+            "blue",
+            "yellow"
+        ],
+        "srv_gender_s": "female",
+        "srv_foodpref_s": "fish, mediterrainean",
+        "srv_carowner_b": true,
+        "srv_carcolor_s": "black",
+        "srv_vegetarian_b": false,
+        "srv_vegan_b": false
+    },
+    {
+        "id": "srv_19012_1",
+    	"main_id" : "19012",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_monthlyincome_i": 8600,
+        "srv_monthlyspending_i": 6000,
+        "srv_martialstatus_s": "unmarried",
+        "srv_children_i": 0,
+        "srv_favcolor_ss": [
+            "red"
+        ],
+        "srv_gender_s": "male",
+        "srv_foodpref_s": "steak, burgers",
+        "srv_carowner_b": false,
+        "srv_vegetarian_b": false,
+        "srv_vegan_b": false
+    },            
+    {
+        "id": "srv_19013_1",
+    	"main_id" : "19013",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_monthlyincome_i": 10000,
+        "srv_monthlyspending_i": 7500,
+        "srv_martialstatus_s": "unmarried",
+        "srv_children_i": 2,
+        "srv_favcolor_ss": [
+            "red",
+            "blue"
+        ],
+        "srv_gender_s": "female",
+        "srv_foodpref_s": "indian",
+        "srv_carowner_b": true,
+        "srv_carcolor_s": "red",
+        "srv_vegetarian_b": true,
+        "srv_vegan_b": true
+    },
+    {
+        "id": "srv_19017_1",
+    	"main_id" : "19017",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_martialstatus_s": "divorced",
+        "srv_children_i": 7,
+        "srv_favcolor_ss": [
+            "black"
+        ],
+        "srv_gender_s": "female",
+        "srv_vegetarian_b": true,
+        "srv_vegan_b": false
+    },
+    {
+        "id": "srv_19018_1",
+    	"main_id" : "19018",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_monthlyincome_i": 13500,
+        "srv_monthlyspending_i": 11000,
+        "srv_martialstatus_s": "unmarried",
+        "srv_children_i": 1,
+        "srv_favcolor_ss": [
+            "red",
+            "yellow",
+            "black",
+            "white"
+        ],
+        "srv_gender_s": "male",
+        "srv_foodpref_s": "chicken, burgers",
+        "srv_carowner_b": true,
+        "srv_carcolor_s": "yellow",
+        "srv_vegetarian_b": false,
+        "srv_vegan_b": false
+    },
+    {
+        "id": "srv_19020_1",
+    	"main_id" : "19020",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_favcolor_ss": [
+            "black",
+            "white"
+        ],
+        "srv_gender_s": "male",
+        "srv_foodpref_s": "thai",
+        "srv_vegetarian_b": true,
+        "srv_vegan_b": false
+    },
+    {
+        "id": "srv_19021_1",
+    	"main_id" : "19021",
+        "node_type": "survey",
+        "tenant": 17,
+        "srv_monthlyspending_i": 5000,
+        "srv_martialstatus_s": "unmarried",
+        "srv_children_i": 0,
+        "srv_favcolor_ss": [
+            "red",
+            "green"
+        ],
+        "srv_gender_s": "diverse",
+        "srv_carowner_b": true,
+        "srv_carcolor_s": "white",
+        "srv_vegetarian_b": true,
+        "srv_vegan_b": true
+    },
+    {
+        "id": "pos_19011_1",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 72163,
+        "pos_invdate_dt": "2024-01-13T00:00:00Z",
+        "pos_code_s": "145AB",
+        "pos_description_s": "DROP LIGHT",
+        "pos_quantity_i": 2,
+        "pos_uprice_d": 198.78,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19011_2",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 32117,
+        "pos_invdate_dt": "2024-03-17T00:00:00Z",
+        "pos_code_s": "82738",
+        "pos_description_s": "JELLY BEANS",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 1.65,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19011_3",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 42128,
+        "pos_invdate_dt": "2024-03-21T00:00:00Z",
+        "pos_code_s": "99738",
+        "pos_description_s": "SANDWICH",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.85,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19011_4",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 22729,
+        "pos_invdate_dt": "2024-03-29T00:00:00Z",
+        "pos_code_s": "1073A",
+        "pos_description_s": "TOASTER",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 499.99,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19011_5",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 33721,
+        "pos_invdate_dt": "2024-03-30T00:00:00Z",
+        "pos_code_s": "3373C",
+        "pos_description_s": "POSTCARDS",
+        "pos_quantity_i": 9,
+        "pos_uprice_d": 1.99,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19011_6",
+    	"main_id" : "19011",
+        "node_type": "pos",
+        "pos_invno_i": 32117,
+        "pos_invdate_dt": "2024-05-18T00:00:00Z",
+        "pos_code_s": "11439",
+        "pos_description_s": "POTATO WEDGES 1LB",
+        "pos_quantity_i": 4,
+        "pos_uprice_d": 2.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_1",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 72122,
+        "pos_invdate_dt": "2024-02-14T00:00:00Z",
+        "pos_code_s": "166BB",
+        "pos_description_s": "TENNIS DRESS",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 178.9,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_2",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 32119,
+        "pos_invdate_dt": "2024-03-17T00:00:00Z",
+        "pos_code_s": "22738",
+        "pos_description_s": "TOBACCO 1LB",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 49.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_3",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 55128,
+        "pos_invdate_dt": "2024-03-21T00:00:00Z",
+        "pos_code_s": "11739",
+        "pos_description_s": "CHEESEBURGER",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 11.85,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_4",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 66720,
+        "pos_invdate_dt": "2024-03-29T00:00:00Z",
+        "pos_code_s": "4443A",
+        "pos_description_s": "RENT-A-BUS WEEK PASS",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 1699.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_5",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 13724,
+        "pos_invdate_dt": "2024-03-31T00:00:00Z",
+        "pos_code_s": "64321",
+        "pos_description_s": "POPCORN",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 4.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19012_6",
+    	"main_id" : "19012",
+        "node_type": "pos",
+        "pos_invno_i": 32117,
+        "pos_invdate_dt": "2024-04-30T00:00:00Z",
+        "pos_code_s": "11439",
+        "pos_description_s": "POTATO WEDGES 1LB",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 2.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_1",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 62192,
+        "pos_invdate_dt": "2024-02-14T00:00:00Z",
+        "pos_code_s": "555BC",
+        "pos_description_s": "FRESH FRUIT MIX 1LB",
+        "pos_quantity_i": 2,
+        "pos_uprice_d": 6.75,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_2",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 22669,
+        "pos_invdate_dt": "2024-03-15T00:00:00Z",
+        "pos_code_s": "14987",
+        "pos_description_s": "PUMPKIN",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_3",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 33168,
+        "pos_invdate_dt": "2024-03-21T00:00:00Z",
+        "pos_code_s": "15039",
+        "pos_description_s": "CORNFLAKES",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.25,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_4",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 52720,
+        "pos_invdate_dt": "2024-03-21T00:00:00Z",
+        "pos_code_s": "1243A",
+        "pos_description_s": "OAT MILK 0.5GAL",
+        "pos_quantity_i": 6,
+        "pos_uprice_d": 4.89,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_5",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 14725,
+        "pos_invdate_dt": "2024-03-31T00:00:00Z",
+        "pos_code_s": "5521C",
+        "pos_description_s": "WATERMELON EXTRACT 1GILL",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 149.8,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19013_6",
+    	"main_id" : "19013",
+        "node_type": "pos",
+        "pos_invno_i": 81543,
+        "pos_invdate_dt": "2024-03-31T00:00:00Z",
+        "pos_code_s": "11439",
+        "pos_description_s": "POTATO WEDGES 1LB",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 2.99,
+        "pos_country_s": "USA"
+    },
+    {
+        "id": "pos_19014_1",
+    	"main_id" : "19014",
+        "node_type": "pos",
+        "pos_invno_i": 42166,
+        "pos_invdate_dt": "2024-03-21T00:00:00Z",
+        "pos_code_s": "3272K",
+        "pos_description_s": "BOUQUET",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 33,
+        "pos_country_s": "GERMANY"
+    },
+    {
+        "id": "pos_19014_2",
+    	"main_id" : "19014",
+        "node_type": "pos",
+        "pos_invno_i": 24449,
+        "pos_invdate_dt": "2024-03-29T00:00:00Z",
+        "pos_code_s": "1088B",
+        "pos_description_s": "BUS TICKET 3 ZONES",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 8.5,
+        "pos_country_s": "GERMANY"
+    },
+    {
+        "id": "pos_19014_3",
+    	"main_id" : "19014",
+        "node_type": "pos",
+        "pos_invno_i": 16321,
+        "pos_invdate_dt": "2024-03-30T00:00:00Z",
+        "pos_code_s": "1H73C",
+        "pos_description_s": "TOILET CLEANER",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.99,
+        "pos_country_s": "GERMANY"
+    },
+    {
+        "id": "pos_19014_4",
+    	"main_id" : "19014",
+        "node_type": "pos",
+        "pos_invno_i": 39987,
+        "pos_invdate_dt": "2024-06-20T00:00:00Z",
+        "pos_code_s": "XX439",
+        "pos_description_s": "LIP GLOSS",
+        "pos_quantity_i": 2,
+        "pos_uprice_d": 19.99,
+        "pos_country_s": "GERMANY"
+    },
+    {
+        "id": "pos_19015_1",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 72163,
+        "pos_invdate_dt": "2024-01-17T00:00:00Z",
+        "pos_code_s": "166AB",
+        "pos_description_s": "CORGY FOOD 1KG",
+        "pos_quantity_i": 2,
+        "pos_uprice_d": 1.78,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19015_2",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 32117,
+        "pos_invdate_dt": "2024-03-28T00:00:00Z",
+        "pos_code_s": "15538",
+        "pos_description_s": "BAKED BEANS 250GR",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 0.65,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19015_3",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 42128,
+        "pos_invdate_dt": "2024-03-22T00:00:00Z",
+        "pos_code_s": "99738",
+        "pos_description_s": "SANDWICH",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.85,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19015_4",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 22729,
+        "pos_invdate_dt": "2024-04-11T00:00:00Z",
+        "pos_code_s": "1073A",
+        "pos_description_s": "TOASTER",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 499.99,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19015_5",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 33721,
+        "pos_invdate_dt": "2024-05-18T00:00:00Z",
+        "pos_code_s": "3373C",
+        "pos_description_s": "POSTCARDS",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 1.99,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19015_6",
+    	"main_id" : "19015",
+        "node_type": "pos",
+        "pos_invno_i": 32117,
+        "pos_invdate_dt": "2024-05-20T00:00:00Z",
+        "pos_code_s": "K1430",
+        "pos_description_s": "MINTY MEATBALLS 1KG",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 0.99,
+        "pos_country_s": "UK"
+    },
+    {
+        "id": "pos_19017_1",
+    	"main_id" : "19017",
+        "node_type": "pos",
+        "pos_invno_i": 41191,
+        "pos_invdate_dt": "2024-03-14T00:00:00Z",
+        "pos_code_s": "115BC",
+        "pos_description_s": "RED WINE 0.75L",
+        "pos_quantity_i": 6,
+        "pos_uprice_d": 5.75,
+        "pos_country_s": "FRANCE"
+    },
+    {
+        "id": "pos_19017_2",
+    	"main_id" : "19017",
+        "node_type": "pos",
+        "pos_invno_i": 23219,
+        "pos_invdate_dt": "2024-03-15T00:00:00Z",
+        "pos_code_s": "7723D",
+        "pos_description_s": "BAGUETTE",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 3.99,
+        "pos_country_s": "FRANCE"
+    },
+    {
+        "id": "pos_19017_3",
+    	"main_id" : "19017",
+        "node_type": "pos",
+        "pos_invno_i": 39967,
+        "pos_invdate_dt": "2024-03-15T00:00:00Z",
+        "pos_code_s": "22039",
+        "pos_description_s": "CORNFLAKES",
+        "pos_quantity_i": 2,
+        "pos_uprice_d": 4.25,
+        "pos_country_s": "FRANCE"
+    },
+    {
+        "id": "pos_19017_4",
+    	"main_id" : "19017",
+        "node_type": "pos",
+        "pos_invno_i": 23721,
+        "pos_invdate_dt": "2024-03-15T00:00:00Z",
+        "pos_code_s": "H778A",
+        "pos_description_s": "CHEESE 36M 100GR",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 8.99,
+        "pos_country_s": "FRANCE"
+    },
+    {
+        "id": "pos_19017_5",
+    	"main_id" : "19017",
+        "node_type": "pos",
+        "pos_invno_i": 64785,
+        "pos_invdate_dt": "2024-03-31T00:00:00Z",
+        "pos_code_s": "5521C",
+        "pos_description_s": "WATERMELON EXTRACT 0.118L",
+        "pos_quantity_i": 1,
+        "pos_uprice_d": 199.99,
+        "pos_country_s": "FRANCE"
+    }
+]
