@@ -55,7 +55,9 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
 
         assertSame(smw, helper.consolidateMatchTree(smw));
 
-        smw = wrap("STRICT age!=3", ctx);
+        smw = wrap("STRICT some_code_md_i!=5", ctx);
+
+        assertEquals(smw, helper.consolidateMatchTree(smw));
 
         MatchTreeElement root = enforceIsGroupingEligible(matchTreeOf("age=3 and color=red and taste=bad", ctx));
         assertSame(root, helper.consolidateMatchTree(root));
