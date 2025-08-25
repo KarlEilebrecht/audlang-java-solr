@@ -21,10 +21,6 @@ package de.calamanari.adl.solr.config;
 
 import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
 import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateArgFieldMap;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateDocumentFilters;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateRequiredDocumentConfigFields;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateUniqueFieldTypes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -93,10 +89,10 @@ public record SubDocumentConfig(String nodeType, SolrDocumentNature documentNatu
     public SubDocumentConfig(String nodeType, SolrDocumentNature documentNature, List<FilterField> documentFilters, Map<String, ArgFieldAssignment> argFieldMap,
             AutoMappingPolicy autoMappingPolicy, ArgMetaInfoLookup guardianLookup) {
 
-        validateRequiredDocumentConfigFields(nodeType, documentNature, documentFilters, argFieldMap);
-        validateDocumentFilters(nodeType, documentNature, documentFilters, argFieldMap);
-        validateArgFieldMap(nodeType, documentNature, documentFilters, argFieldMap);
-        validateUniqueFieldTypes(nodeType, documentNature, documentFilters, argFieldMap, null);
+        ConfigValidationUtils.validateRequiredDocumentConfigFields(nodeType, documentNature, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateDocumentFilters(nodeType, documentNature, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateArgFieldMap(nodeType, documentNature, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateUniqueFieldTypes(nodeType, documentNature, documentFilters, argFieldMap, null);
 
         if (documentNature == SolrDocumentNature.MAIN) {
             throw new ConfigException(String.format(

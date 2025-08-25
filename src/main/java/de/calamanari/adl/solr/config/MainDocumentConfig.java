@@ -21,13 +21,6 @@ package de.calamanari.adl.solr.config;
 
 import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
 import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateArgFieldMap;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateDocumentFilters;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateGuardianLookups;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateNoStaticFieldStealing;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateRequiredDocumentConfigFields;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateSubDocumentConfigs;
-import static de.calamanari.adl.solr.config.ConfigUtils.validateUniqueFieldTypes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,13 +95,13 @@ public record MainDocumentConfig(String nodeType, List<FilterField> documentFilt
     public MainDocumentConfig(String nodeType, List<FilterField> documentFilters, Map<String, ArgFieldAssignment> argFieldMap,
             AutoMappingPolicy autoMappingPolicy, List<SubDocumentConfig> subDocumentConfigs, ArgMetaInfoLookup guardianLookup) {
 
-        validateRequiredDocumentConfigFields(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
-        validateDocumentFilters(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
-        validateArgFieldMap(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
-        validateUniqueFieldTypes(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap, subDocumentConfigs);
-        validateSubDocumentConfigs(nodeType, documentFilters, argFieldMap, subDocumentConfigs);
-        validateNoStaticFieldStealing(nodeType, documentFilters, argFieldMap, subDocumentConfigs);
-        validateGuardianLookups(nodeType, documentFilters, argFieldMap, subDocumentConfigs, guardianLookup);
+        ConfigValidationUtils.validateRequiredDocumentConfigFields(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateDocumentFilters(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateArgFieldMap(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap);
+        ConfigValidationUtils.validateUniqueFieldTypes(nodeType, SolrDocumentNature.MAIN, documentFilters, argFieldMap, subDocumentConfigs);
+        ConfigValidationUtils.validateSubDocumentConfigs(nodeType, documentFilters, argFieldMap, subDocumentConfigs);
+        ConfigValidationUtils.validateNoStaticFieldStealing(nodeType, documentFilters, argFieldMap, subDocumentConfigs);
+        ConfigValidationUtils.validateGuardianLookups(nodeType, documentFilters, argFieldMap, subDocumentConfigs, guardianLookup);
 
         List<SubDocumentConfig> subDocumentConfigsTemp = (subDocumentConfigs == null || subDocumentConfigs.isEmpty()) ? Collections.emptyList()
                 : new ArrayList<>(subDocumentConfigs);
