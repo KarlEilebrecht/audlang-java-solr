@@ -13,9 +13,9 @@ on the [Audlang Java Core Project](https://github.com/KarlEilebrecht/audlang-jav
 
 There is a small set of further dependencies (e.g., SLF4j for logging, JUnit), please refer to this project's POM for details.
 
-Primarily, this project includes a functional **ready-to-use implementation** to map various Solr document layouts and to generate Solr-queries for these setups from [CoreExpressions](https://github.com/KarlEilebrecht/audlang-java-core/blob/main/src/main/java/de/calamanari/adl/irl/README.md).
+Primarily, this project includes a functional **ready-to-use implementation** to map various Solr document layouts and to generate Solr-queries for these setups from [CoreExpressions](https://github.com/KarlEilebrecht/audlang-java-core/blob/main/src/main/java/de/calamanari/adl/irl/README.md). The converter supports the full feature set of the [Audience Definition Language Specification](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#audience-definition-language-specification) with only very few [limitations](./doc/known-limitations.md).
 
-The purpose of this framework is generating Solr-queries (textual expressions). Hence, apart from the tests in this project, there are no library dependencies to the Apache Solr ecosystem. The project has been developed for Solr 9, and its tests run against this release. However, there is no dependency to any particular Solr version.
+The purpose of this framework is generating Solr-queries (textual expressions). Hence, apart from the tests included in this project, there are no library dependencies to the Apache Solr ecosystem. The project has been developed for Solr 9, and its tests run against this release. However, there is no dependency to any particular Solr version.
 
 Significant parts of this project are dedicated to the definition and mapping of a Solr document landscape. Similar to my [sql-converter implementation](https://github.com/KarlEilebrecht/audlang-java-sql), a major goal was supporting different layouts. You can work with a single document, but there is also support for joining **nested or dependent documents**. 
 
