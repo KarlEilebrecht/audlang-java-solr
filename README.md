@@ -23,7 +23,7 @@ A **fluent self-explaining API** helps simplify the setup and keep the configura
 
 Bridging the gap between a logical data model that conforms to the [Audlang Type Conventions](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#2-type-conventions) (resp. any untyped model) and a managed schema with Solr-types was a main challenge during the development. The framework addresses the problem most of the time with **[automatic type coalescence](./doc/type-coalescence.md)** for **[common Solr-types](./doc/solr-types.md)**. 
 
-To get an idea how the configuration works, checkout this project and review the [managed schema](./src/test/resources/solr/configsets/audlang/conf/managed-schema.xml), [test data](./src/test/resources/solr/exampledocs/audlang-data-hybrid.json) and the [mapping](./src/test/java/de/calamanari/adl/solr/EmbeddedSolrServerUtils.java) related to the [embedded Solr tests](./src/test/java/de/calamanari/adl/solr/cnv/SolrExpressionConverterComplexTest.java).
+To get an idea how the configuration works, checkout this project and review the [managed schema](./src/test/resources/solr/configsets/audlang/conf/managed-schema.xml), [test data](./src/test/resources/solr/exampledocs/audlang-data-hybrid.json) and the [mapping setup](./src/test/java/de/calamanari/adl/solr/EmbeddedSolrServerUtils.java) related to the [embedded Solr tests](./src/test/java/de/calamanari/adl/solr/cnv/SolrExpressionConverterComplexTest.java).
 
 *Give it a try, have fun!*
 
