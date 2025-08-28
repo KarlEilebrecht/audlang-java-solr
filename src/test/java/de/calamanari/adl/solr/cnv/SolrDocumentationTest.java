@@ -115,6 +115,8 @@ class SolrDocumentationTest extends SolrTestBase {
 
         assertQueryResult(list(19014), "home-country=Germany AND pos.date > 2024-04-01");
 
+        assertQueryResult(list(19011, 19012, 19013, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "NOT (home-country=Germany AND pos.date > 2024-04-01)");
+
         assertQueryResult(list(19011, 19012, 19014, 19015), "pos.date > 2024-04-01");
 
         assertQueryResult(list(19017), "pos.name = CORNFLAKES AND pos.date=2024-03-15 AND pos.anyDate=2024-03-14");

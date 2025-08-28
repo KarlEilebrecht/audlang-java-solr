@@ -430,7 +430,7 @@ SolrMappingConfig mappingConfig
 
 ### Example 6
 
-The expression `pos.country=Germany and pos.date > 2024-04-01` asks for *"anybody from Germany who bought anything after first of April, 2024"*. 
+The expression `home-country=Germany AND pos.date > 2024-04-01` asks for *"anybody from Germany who bought anything after first of April, 2024"*. 
 As expected it translates to two filter queries to be executed by Solr:
 
 ```sql
@@ -449,7 +449,7 @@ If we eliminate the home-country condition and query `pos.date > 2024-04-01`, th
 \   AND\ pos_invdate_dt\:\[2024\\\-04\\\-02T00\\\:00\\\:00Z\ TO\ \*\]"}
 ```
 
-On the other hand, if we query the opposite of the first query, namely `NOT (pos.country=Germany AND pos.date > 2024-04-01)`, the related Solr query becomes quite complex:
+On the other hand, if we query the opposite of the first query, namely `NOT (home-country=Germany AND pos.date > 2024-04-01)`, the related Solr query turns into:
 
 ```sql
 node_type:profile
@@ -460,20 +460,10 @@ AND (
     )
     OR (
         node_type:profile
-        AND NOT country:*
-    )
-    OR (
-        node_type:profile
         AND NOT {!join from=main_id to=id v="node_type\:pos\
-\   \ \ \ \ \ \ \ \ AND\ pos_invdate_dt\:\[2024\\\-04\\\-02T00\\\:00\\\:00Z\ TO\ \*\]"}
+\ \ \ \ \ \ AND\ pos_invdate_dt\:\[2024\\\-04\\\-02T00\\\:00\\\:00Z\ TO\ \*\]"}
     )
-    OR (
-        node_type:profile
-        AND NOT {!join from=main_id to=id v="node_type\:pos\
-\ \ \ \ \ \ \ \ AND\ pos_invdate_dt\:\*"}
-    )
-)
-```
+)```
 
 *What can we do if the user is interested in **any** invoice date?*
 
