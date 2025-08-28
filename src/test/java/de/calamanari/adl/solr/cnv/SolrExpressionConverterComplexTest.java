@@ -370,18 +370,8 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 <<<[
 
                 node_type:profile
-                AND (
-                    (
-                        node_type:profile
-                        AND NOT {!parent which="node_type:profile" v="node_type\\:fact\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ fct_hascat_b\\:TRUE"}
-                    )
-                    OR (
-                        node_type:profile
-                        AND NOT {!parent which="node_type:profile" v="node_type\\:fact\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ fct_hascat_b\\:\\*"}
-                    )
-                )
+                AND NOT {!parent which="node_type:profile" v="node_type\\:fact\\
+                \\ \\ \\ \\ AND\\ fct_hascat_b\\:TRUE"}
 
                 node_type:profile
                 AND {!parent which="node_type:profile" v="node_type\\:fact\\
@@ -393,18 +383,8 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 <<<[
 
                 node_type:profile
-                AND (
-                    (
-                        node_type:profile
-                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-                    )
-                    OR (
-                        node_type:profile
-                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:\\*"}
-                    )
-                )
+                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
 
                 node_type:profile
                 AND {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
@@ -422,18 +402,8 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                     OR (
                         {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{4000\\ TO\\ \\*\\]"}
-                        AND (
-                            (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-                            )
-                            OR (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:\\*"}
-                            )
-                        )
+                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
                     )
                 )
 
@@ -450,34 +420,14 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ srv_foodpref_s\\:\\*fish\\*\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ OR\\ srv_foodpref_s\\:\\*thai\\*\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\)"}
-                        AND (
-                            (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_vegan_b\\:TRUE"}
-                            )
-                            OR (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_vegan_b\\:\\*"}
-                            )
-                        )
+                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_vegan_b\\:TRUE"}
                     )
                     OR (
                         {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{5000\\ TO\\ \\*\\]"}
-                        AND (
-                            (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-                            )
-                            OR (
-                                node_type:profile
-                                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:\\*"}
-                            )
-                        )
+                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
                     )
                 )
 
@@ -518,21 +468,12 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
 
                 node_type:profile
                 AND (
-                    (
-                        node_type:profile
-                        AND NOT flt_sports_ss:tennis
-                    )
-                    OR (
-                        node_type:profile
-                        AND NOT flt_sports_ss:*
-                    )
-                )
-
-                node_type:profile
-                AND (
                     flt_clubmember_b:TRUE
                     OR flt_hobbies_ss:origami
                 )
+
+                node_type:profile
+                AND NOT flt_sports_ss:tennis
 
                 ]>>>""", "(clubMember = 1 OR hobbies=origami) AND sports!=tennis");
 
@@ -600,6 +541,42 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
         assertQueryResult(list(19011, 19012, 19014, 19015, 19016, 19018, 19019, 19020, 19021), "NOT (pos.anyDate = 2024-03-15 and pos.quantity > 1)");
 
         assertQueryResult(list(19011, 19012, 19014, 19015), "STRICT NOT (pos.anyDate = 2024-03-15 and pos.quantity > 1)");
+
+    }
+
+    @Test
+    void testIssue_2_DefaultNegationCausesRedundantQueryPart() {
+        assertQueryDef("""
+                <<<[
+
+                (
+                    node_type:profile
+                    AND NOT {!join from=main_id to=id v="node_type\\:pos\\
+                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:1"}
+                )
+
+                ]>>>""", "pos.quantity != 1");
+
+        assertQueryResult(list(19016, 19018, 19019, 19020, 19021), "pos.quantity != 1");
+
+        assertQueryResult(list(19012, 19016, 19018, 19019, 19020, 19021), "pos.quantity != 2");
+
+        assertQueryDef("""
+                <<<[
+
+                (
+                    node_type:profile
+                    AND {!join from=main_id to=id v="node_type\\:pos\\
+                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:\\*"}
+                    AND NOT {!join from=main_id to=id v="node_type\\:pos\\
+                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:1"}
+                )
+
+                ]>>>""", "STRICT pos.quantity != 1");
+
+        assertQueryResult(list(), "STRICT pos.quantity != 1");
+
+        assertQueryResult(list(19012), "STRICT pos.quantity != 2");
 
     }
 

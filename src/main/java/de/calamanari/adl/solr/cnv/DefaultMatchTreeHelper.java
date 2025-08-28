@@ -663,6 +663,10 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
 
         List<MatchTreeElement> updated = mergeAndSort(combinedMatchWrappers, remainingMatchWrappers, otherElements);
 
+        if (updated.size() > 1 && cmte.combiType() == CombinedExpressionType.OR) {
+            removeRedundantIsUnknownChecksFromOr(updated);
+        }
+
         if (updated.size() == 1) {
             return updated.get(0);
         }
@@ -672,6 +676,65 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
                 res = matchTreeElement;
             }
             return res;
+        }
+    }
+
+    /**
+     * This method addresses <b>ISSUE #2</b> <i>Default negation causes redundant query part</i>
+     * <p>
+     * When we recombine an OR we test if there is a NOT ANY_VALUE_MATCH (semantically "is unknown") for any argument where we have another negative condition
+     * for. If so, we remove the redundant condition.
+     * <p>
+     * <b>Example:</b> The set <b><code>NOT color:*</code></b> (no color at all) is <i>fully contained</i> in the set <b><code>NOT color:red</code></b>, so we
+     * can eliminate <b><code>NOT color:*</code></b> from the OR without affecting the result.
+     * 
+     * @param orMembers members of the OR to be created
+     */
+    private void removeRedundantIsUnknownChecksFromOr(List<MatchTreeElement> orMembers) {
+
+        List<SingleMatchWrapper> candidates = new ArrayList<>();
+        List<String> coveredIsUnknownArgNames = new ArrayList<>();
+
+        // @formatter:off
+        orMembers.stream().filter(MatchWrapper.class::isInstance)
+                          .map(MatchWrapper.class::cast)
+                          .filter(MatchWrapper::isNegation)
+                          .forEach(matchWrapper -> {
+        // @formatter:on
+                    if (matchWrapper.type() == MatchWrapperType.ANY_VALUE_MATCH) {
+                        candidates.add((SingleMatchWrapper) matchWrapper);
+                    }
+                    else {
+                        String argNameLeft = matchWrapper.argName();
+                        String argNameRight = matchWrapper.referencedArgName();
+                        if (!coveredIsUnknownArgNames.contains(argNameLeft)) {
+                            coveredIsUnknownArgNames.add(argNameLeft);
+                        }
+                        if (!coveredIsUnknownArgNames.contains(argNameRight)) {
+                            coveredIsUnknownArgNames.add(argNameRight);
+                        }
+                    }
+                });
+
+        removeRedundantIsUnknownChecksFromOr(orMembers, candidates, coveredIsUnknownArgNames);
+
+    }
+
+    /**
+     * Removes any candidate from the orMembers if the argName is contained in the list of covered arg names
+     * 
+     * @param orMembers
+     * @param candidates
+     * @param coveredIsUnknownArgNames
+     */
+    private void removeRedundantIsUnknownChecksFromOr(List<MatchTreeElement> orMembers, List<SingleMatchWrapper> candidates,
+            List<String> coveredIsUnknownArgNames) {
+        if (!candidates.isEmpty() && !coveredIsUnknownArgNames.isEmpty()) {
+            for (SingleMatchWrapper candidate : candidates) {
+                if (coveredIsUnknownArgNames.contains(candidate.argName())) {
+                    orMembers.remove(candidate);
+                }
+            }
         }
     }
 
@@ -831,7 +894,7 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
      * @param combinedMatchWrappers (come first)
      * @param remainingMatchWrappers
      * @param otherElements
-     * @return element list for execution
+     * @return element list for execution (mutable)
      */
     protected List<MatchTreeElement> mergeAndSort(List<? extends MatchWrapper> combinedMatchWrappers, List<SingleMatchWrapper> remainingMatchWrappers,
             List<MatchTreeElement> otherElements) {

@@ -133,13 +133,23 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
     }
 
     @Test
-    void testConsolidateMultiValueAndNotCombiningStrict() {
+    void testConsolidateMultiValueAndNotCombining() {
+
+        // Note:
+        // strict vs. default negation does not matter below because the converter's part is missing
+        // The converter will add existence checks for strict comparisons later
 
         assertEquals("MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]",
                 consolidate("age strict not any of (5,6)").toString());
 
+        assertEquals("MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]",
+                consolidate("age not any of (5,6)").toString());
+
         assertEquals("MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6, age = 7, age = 8, age = 9], matchInstruction=NEGATE]",
                 consolidate("age strict not any of (5,6,7,8,9)").toString());
+
+        assertEquals("MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6, age = 7, age = 8, age = 9], matchInstruction=NEGATE]",
+                consolidate("age not any of (5,6,7,8,9)").toString());
 
         assertEquals("""
 
@@ -152,6 +162,15 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
 
         assertEquals("""
 
+                CombinedMatchTreeElement *![combiType=OR (node1)] (
+                        MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
+                    OR
+                        MultiMatchWrapper *![nodeType=node1, members=[color = pink, color = red], matchInstruction=NEGATE]
+                )
+                """, consolidate("age not any of (5,6) OR color strict not any of (red, pink)").toDebugString());
+
+        assertEquals("""
+
                 CombinedMatchTreeElement *![combiType=AND (node1)] (
                         MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
                     AND
@@ -159,73 +178,14 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                 )
                 """, consolidate("age strict not any of (5,6) AND color strict not any of (red, pink)").toDebugString());
 
-    }
-
-    @Test
-    void testConsolidateMultiValueAndNotCombiningDefault() {
-
-        // @formatter:off
-        assertEquals(
-                """
-
-                CombinedMatchTreeElement *![combiType=OR (node1)] (
-                        MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
-                    OR
-                        SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]
-                )                
-                """,
-                consolidate("age not any of (5,6)").toDebugString());
-        // @formatter:on
-
-        // @formatter:off
-        assertEquals(
-                """
-
-                CombinedMatchTreeElement *![combiType=OR (node1)] (
-                        MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6, age = 7, age = 8, age = 9], matchInstruction=NEGATE]
-                    OR
-                        SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]
-                )                
-                """,
-                consolidate("age not any of (5,6,7,8,9)").toDebugString());
-        // @formatter:on
-
-        // @formatter:off
-        assertEquals(
-                """
-
-                CombinedMatchTreeElement *![combiType=OR (node1)] (
-                        MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
-                    OR
-                        SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]
-                    OR
-                        MultiMatchWrapper *![nodeType=node1, members=[color = pink, color = red], matchInstruction=NEGATE]
-                    OR
-                        SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=color IS UNKNOWN, matchInstruction=NEGATE]
-                )                
-                """,
-                consolidate("age not any of (5,6) OR color not any of (red, pink)").toDebugString());
-        // @formatter:on
-
-        // @formatter:off
         assertEquals("""
 
                 CombinedMatchTreeElement *![combiType=AND (node1)] (
-                        CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
-                            OR
-                                SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]
-                        )
+                        MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
                     AND
-                        CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                MultiMatchWrapper *![nodeType=node1, members=[color = pink, color = red], matchInstruction=NEGATE]
-                            OR
-                                SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=color IS UNKNOWN, matchInstruction=NEGATE]
-                        )
-                )                
-                """,
-                consolidate("age not any of (5,6) AND color not any of (red, pink)").toDebugString());
-        // @formatter:on
+                        MultiMatchWrapper *![nodeType=node1, members=[color = pink, color = red], matchInstruction=NEGATE]
+                )
+                """, consolidate("age not any of (5,6) AND color strict not any of (red, pink)").toDebugString());
 
     }
 
@@ -271,8 +231,6 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                         MultiMatchWrapper *_[nodeType=node1, members=[age = 8, age = 9], matchInstruction=DEFAULT]
                     OR
                         MultiMatchWrapper *![nodeType=node1, members=[age = 5, age = 6], matchInstruction=NEGATE]
-                    OR
-                        SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]
                 )
                 """,
                 consolidate("age not any of (5,6) OR age any of (8,9)").toDebugString());
@@ -367,20 +325,18 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
         // @formatter:off
 
         assertEquals(
-                "CombinedMatchTreeElement *![combiType=OR (node1), childElements=["
-                        + "BetweenMatchWrapper *![nodeType=node1, type=VALUE_GTE_AND_LTE_MATCH, argName=age, "
-                            + "members=[age > 18, age = 18, age < 20, age = 20], matchInstruction=NEGATE], "
-                        + "SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=age IS UNKNOWN, matchInstruction=NEGATE]]]",
+                "BetweenMatchWrapper *![nodeType=node1, type=VALUE_GTE_AND_LTE_MATCH, argName=age, members=[age > 18, age = 18, age < 20, age = 20], matchInstruction=NEGATE]",
                 consolidate("NOT (age >= 18 AND age <= 20)").toString());
 
         // @formatter:on
 
         // @formatter:off
 
+        // simulate STRICT
         assertEquals(
                 "BetweenMatchWrapper *![nodeType=node1, type=VALUE_GTE_AND_LTE_MATCH, argName=age, "
                         + "members=[age > 18, age = 18, age < 20, age = 20], matchInstruction=NEGATE]",
-                consolidate("STRICT NOT (age >= 18 AND age <= 20)").toString());
+                consolidate("NOT (age >= 18 AND age <= 20) AND age IS NOT UNKNOWN").toString());
 
         // @formatter:on
 
@@ -668,17 +624,9 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                     NodeTypeMatchTreeElementGroup [combiType=AND node1] (
                             SingleMatchWrapper *_[nodeType=node1, type=VALUE_MATCH, matchExpression=age = 18, matchInstruction=DEFAULT]
                         AND
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=color = red, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=color IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=color = red, matchInstruction=NEGATE]
                         AND
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=taste = bad, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=taste IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=taste = bad, matchInstruction=NEGATE]
                     )
                 ]
                 """,
@@ -689,31 +637,20 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
 
         // @formatter:off
 
-        assertEquals("""
+        assertEquals(
+                """
 
                 [
                     CombinedMatchTreeElement *![combiType=AND (node1)] (
                             SingleMatchWrapper *_[nodeType=node1, type=VALUE_MATCH, matchExpression=age = 18, matchInstruction=DEFAULT]
                         AND
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=color = red, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=color IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=color = red, matchInstruction=NEGATE]
                         AND
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=taste = bad, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=taste IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=taste = bad, matchInstruction=NEGATE]
                     ),
                 
                     CombinedMatchTreeElement _![combiType=AND (<HYBRID>)] (
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=contact_date_dt = 2025-01-01, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=contact_date_dt IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=contact_date_dt = 2025-01-01, matchInstruction=NEGATE]
                         AND
                             SingleMatchWrapper *_[nodeType=node3, type=VALUE_MATCH, matchExpression=flag1_b = 1, matchInstruction=DEFAULT]
                     )
@@ -735,19 +672,11 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                         OR
                             SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=color = red, matchInstruction=NEGATE]
                         OR
-                            SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=color IS UNKNOWN, matchInstruction=NEGATE]
-                        OR
                             SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=taste = bad, matchInstruction=NEGATE]
-                        OR
-                            SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=taste IS UNKNOWN, matchInstruction=NEGATE]
                     ),
                 
                     CombinedMatchTreeElement _![combiType=AND (<HYBRID>)] (
-                            CombinedMatchTreeElement *![combiType=OR (node1)] (
-                                    SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=contact_date_dt = 2025-01-01, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper *![nodeType=node1, type=ANY_VALUE_MATCH, matchExpression=contact_date_dt IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper *![nodeType=node1, type=VALUE_MATCH, matchExpression=contact_date_dt = 2025-01-01, matchInstruction=NEGATE]
                         AND
                             SingleMatchWrapper *_[nodeType=node3, type=VALUE_MATCH, matchExpression=flag1_b = 1, matchInstruction=DEFAULT]
                     )
@@ -779,8 +708,6 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                     SingleMatchWrapper *_[nodeType=node2, type=VALUE_MATCH, matchExpression=e_i = 4, matchInstruction=DEFAULT],
                 
                     SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE],
-                
-                    SingleMatchWrapper _![nodeType=node2, type=ANY_VALUE_MATCH, matchExpression=b_i IS UNKNOWN, matchInstruction=NEGATE],
                 
                     NodeTypeMatchTreeElementGroup [combiType=OR node3] (
                             SingleMatchWrapper *_[nodeType=node3, type=VALUE_MATCH, matchExpression=c_b = 1, matchInstruction=DEFAULT]
@@ -871,11 +798,7 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                 
                     SingleMatchWrapper *_[nodeType=node2, type=VALUE_MATCH, matchExpression=e_i = 4, matchInstruction=DEFAULT],
                 
-                    CombinedMatchTreeElement _![combiType=OR (node2)] (
-                            SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE]
-                        OR
-                            SingleMatchWrapper _![nodeType=node2, type=ANY_VALUE_MATCH, matchExpression=b_i IS UNKNOWN, matchInstruction=NEGATE]
-                    ),
+                    SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE],
                 
                     NodeTypeMatchTreeElementGroup [combiType=AND node3] (
                             SingleMatchWrapper *_[nodeType=node3, type=VALUE_MATCH, matchExpression=c_b = 1, matchInstruction=DEFAULT]
@@ -905,8 +828,6 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                     SingleMatchWrapper *_[nodeType=node2, type=VALUE_MATCH, matchExpression=e_i = 4, matchInstruction=DEFAULT],
                 
                     SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE],
-                
-                    SingleMatchWrapper _![nodeType=node2, type=ANY_VALUE_MATCH, matchExpression=b_i IS UNKNOWN, matchInstruction=NEGATE],
                 
                     NodeTypeMatchTreeElementGroup [combiType=OR node3] (
                             SingleMatchWrapper *_[nodeType=node3, type=VALUE_MATCH, matchExpression=c_b = 1, matchInstruction=DEFAULT]
@@ -1108,8 +1029,6 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                             SingleMatchWrapper *_[nodeType=node1, type=VALUE_MATCH, matchExpression=a_s = foo, matchInstruction=DEFAULT]
                         OR
                             SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE]
-                        OR
-                            SingleMatchWrapper _![nodeType=node2, type=ANY_VALUE_MATCH, matchExpression=b_i IS UNKNOWN, matchInstruction=NEGATE]
                     )
                 ]
                 """,
@@ -1140,11 +1059,7 @@ class DefaultMatchTreeHelperTest extends SolrTestBase {
                     CombinedMatchTreeElement _![combiType=AND (<HYBRID>)] (
                             SingleMatchWrapper *_[nodeType=node1, type=VALUE_MATCH, matchExpression=a_s = foo, matchInstruction=DEFAULT]
                         AND
-                            CombinedMatchTreeElement _![combiType=OR (node2)] (
-                                    SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE]
-                                OR
-                                    SingleMatchWrapper _![nodeType=node2, type=ANY_VALUE_MATCH, matchExpression=b_i IS UNKNOWN, matchInstruction=NEGATE]
-                            )
+                            SingleMatchWrapper _![nodeType=node2, type=VALUE_MATCH, matchExpression=b_i = 3, matchInstruction=NEGATE]
                     )
                 ]
                 """,
