@@ -338,7 +338,7 @@ class SolrExpressionConverterTest extends SolrTestBase {
 
         assertQueryResult(list(19011), "pos.date = 2024-01-13");
         assertQueryResult(list(19012, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "pos.date != 2024-01-13");
-        assertQueryResult(list(19012, 19013, 19014, 19015, 19017), "STRICT pos.date != 2024-01-13");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT pos.date != 2024-01-13");
         assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "pos.date <= 2024-06-20");
 
         assertQueryResult(list(19012), "pos.name = POPCORN");
@@ -346,7 +346,7 @@ class SolrExpressionConverterTest extends SolrTestBase {
 
         assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "pos.quantity > 1");
         assertQueryResult(list(19012, 19016, 19018, 19019, 19020, 19021), "NOT pos.quantity > 1");
-        assertQueryResult(list(19012), "STRICT NOT pos.quantity > 1");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT NOT pos.quantity > 1");
 
         assertQueryResult(list(19012), "pos.unitPrice > 500");
 
@@ -402,7 +402,8 @@ class SolrExpressionConverterTest extends SolrTestBase {
     @Test
     void testPosDataOnlySingleAttributeSelect() {
         assertQueryResult(list(19011), "pos.date = 2024-01-13");
-        assertQueryResult(list(19012, 19013, 19014, 19015, 19017), "STRICT pos.date != 2024-01-13");
+        assertQueryResult(list(19012, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "pos.date != 2024-01-13");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT pos.date != 2024-01-13");
         assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "pos.date <= 2024-06-20");
     }
 

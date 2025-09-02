@@ -114,4 +114,9 @@ public interface MatchWrapper extends MatchTreeElement {
         return isNegation();
     }
 
+    @Override
+    default boolean isMissingDocumentIncluded() {
+        return isNegation() && matchInstruction() == MatchInstruction.NEGATE;
+    }
+
 }

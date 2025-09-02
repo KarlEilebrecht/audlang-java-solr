@@ -59,8 +59,16 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 "(q.monthlyIncome.int > 5000 AND q.martialStatus.str != married) OR (q.vegan.flg != 1 AND q.foodPref.str contains any of (fish, thai))");
 
         assertQueryResult(list(19012, 19013, 19017), "pos.name contains any of (MELON, PUMPKIN, CHEESE) AND pos.date > 2024-03-15");
-        assertQueryResult(list(19012, 19013, 19014, 19015, 19017),
+
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT NOT pos.quantity > 2");
+
+        assertQueryResult(list(19012, 19013, 19017), "(pos.name contains any of (MELON, PUMPKIN, CHEESE) AND pos.date > 2024-03-15)");
+
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017),
                 "(pos.name contains any of (MELON, PUMPKIN, CHEESE) AND pos.date > 2024-03-15) OR STRICT NOT pos.quantity > 2");
+
+        assertQueryResult(list(19012, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021),
+                "(pos.name contains any of (MELON, PUMPKIN, CHEESE) AND pos.date > 2024-03-15) OR NOT pos.quantity > 2");
 
         assertQueryResult(list(19013, 19015, 19017, 19021), "(clubMember = 1 OR hobbies=origami) AND sports!=tennis");
         assertQueryResult(list(19017, 19021), "(clubMember = 1 OR hobbies=origami) AND STRICT sports!=tennis");
@@ -117,7 +125,7 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
 
         assertQueryResult(list(19011, 19013, 19015, 19017), "pos.quantity > @pos.unitPrice");
         assertQueryResult(list(19012, 19014, 19016, 19018, 19019, 19020, 19021), "NOT pos.quantity > @pos.unitPrice");
-        assertQueryResult(list(19012, 19014), "STRICT NOT pos.quantity > @pos.unitPrice");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT NOT pos.quantity > @pos.unitPrice");
 
         assertQueryResult(list(19012, 19013), "bodyTempCelsius < @sizeCM and hobbies any of (origami, football, tennis)");
 
@@ -383,12 +391,9 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 <<<[
 
                 node_type:profile
-                AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-
-                node_type:profile
                 AND {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{4000\\ TO\\ \\*\\]"}
+                \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{4000\\ TO\\ \\*\\]\\
+                \\ \\ \\ \\ AND\\ NOT\\ srv_martialstatus_s\\:married"}
 
                 ]>>>""", "q.monthlyIncome.int > 4000 AND q.martialStatus.str != married");
 
@@ -396,16 +401,14 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 <<<[
 
                 node_type:profile
-                AND (
-                    {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_children_i\\:\\{1\\ TO\\ \\*\\]"}
-                    OR (
-                        {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{4000\\ TO\\ \\*\\]"}
-                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-                    )
-                )
+                AND {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ AND\\ \\(\\
+                \\ \\ \\ \\ \\ \\ \\ \\ srv_children_i\\:\\{1\\ TO\\ \\*\\]\\
+                \\ \\ \\ \\ \\ \\ \\ \\ OR\\ \\(\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ srv_monthlyincome_i\\:\\{4000\\ TO\\ \\*\\]\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ NOT\\ srv_martialstatus_s\\:married\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\)\\
+                \\ \\ \\ \\ \\)"}
 
                 ]>>>""", "(q.monthlyIncome.int > 4000 AND q.martialStatus.str != married) OR q.children.int > 1");
 
@@ -413,23 +416,20 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 <<<[
 
                 node_type:profile
-                AND (
-                    (
-                        {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ \\(\\
+                AND {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
+                \\ \\ \\ \\ AND\\ \\(\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\(\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\(\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ srv_foodpref_s\\:\\*fish\\*\\
                 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ OR\\ srv_foodpref_s\\:\\*thai\\*\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\)"}
-                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_vegan_b\\:TRUE"}
-                    )
-                    OR (
-                        {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_monthlyincome_i\\:\\{5000\\ TO\\ \\*\\]"}
-                        AND NOT {!join from=main_id to=id v="\\(node_type\\:survey\\ AND\\ tenant\\:17\\)\\
-                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ srv_martialstatus_s\\:married"}
-                    )
-                )
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\)\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ NOT\\ srv_vegan_b\\:TRUE\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\)\\
+                \\ \\ \\ \\ \\ \\ \\ \\ OR\\ \\(\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ srv_monthlyincome_i\\:\\{5000\\ TO\\ \\*\\]\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ AND\\ NOT\\ srv_martialstatus_s\\:married\\
+                \\ \\ \\ \\ \\ \\ \\ \\ \\)\\
+                \\ \\ \\ \\ \\)"}
 
                 ]>>>""",
                 "(q.monthlyIncome.int > 5000 AND q.martialStatus.str != married) OR (q.vegan.flg != 1 AND q.foodPref.str contains any of (fish, thai))");
@@ -540,8 +540,70 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
 
         assertQueryResult(list(19011, 19012, 19014, 19015, 19016, 19018, 19019, 19020, 19021), "NOT (pos.anyDate = 2024-03-15 and pos.quantity > 1)");
 
-        assertQueryResult(list(19011, 19012, 19014, 19015), "STRICT NOT (pos.anyDate = 2024-03-15 and pos.quantity > 1)");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT NOT (pos.anyDate = 2024-03-15 and pos.quantity > 1)");
 
+    }
+
+    @Test
+    void testBug() {
+
+        showExecution("pos.name contains POTATO AND ( pos.unitPrice = 4.89 OR STRICT pos.quantity != 1)");
+        assertQueryResult(list(19011), "pos.name contains POTATO AND ( pos.unitPrice = 4.89 OR pos.quantity != 1)");
+        assertQueryResult(list(19011), "pos.name contains POTATO AND ( pos.unitPrice = 4.89 OR STRICT pos.quantity != 1)");
+
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT NOT pos.quantity > 2");
+        assertQueryResult(list(19012, 19014, 19015, 19016, 19018, 19019, 19020, 19021), "NOT pos.quantity > 2");
+
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017),
+                "(pos.name contains any of (MELON, PUMPKIN, CHEESE) AND pos.date > 2024-03-15) OR STRICT NOT pos.quantity > 2");
+
+        assertQueryResult(list(19013), "pos.unitPrice = 4.89 AND pos.quantity != 1");
+        assertQueryResult(list(19013), "pos.unitPrice = 4.89 AND STRICT pos.quantity != 1");
+
+        assertQueryResult(list(19013, 19016, 19018, 19019, 19020, 19021), "pos.unitPrice = 4.89 OR pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "pos.unitPrice = 4.89 OR STRICT pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT pos.quantity != 1");
+        assertQueryResult(list(19016, 19018, 19019, 19020, 19021), "pos.quantity != 1");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "pos.quantity = 1");
+
+    }
+
+    @Test
+    void testIssue_1_NotAlwaysTranslatesToNotAny() {
+        assertQueryResult(list(19013), "pos.unitPrice = 4.89 AND pos.quantity != 1");
+        assertQueryResult(list(19013), "pos.unitPrice = 4.89 AND STRICT pos.quantity != 1");
+
+        assertQueryResult(list(19013, 19016, 19018, 19019, 19020, 19021), "pos.unitPrice = 4.89 OR pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "pos.unitPrice = 4.89 OR STRICT pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT pos.quantity != 1");
+        assertQueryResult(list(19016, 19018, 19019, 19020, 19021), "pos.quantity != 1");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "pos.quantity = 1");
+
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT pos.unitPrice != 4.89 AND STRICT pos.quantity != 1");
+
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "pos.unitPrice != 4.89 AND pos.quantity != 1");
+
+        assertQueryResult(list(19011), "pos.name contains POTATO AND ( pos.unitPrice = 4.89 OR pos.quantity != 1)");
+        assertQueryResult(list(19011), "pos.name contains POTATO AND ( pos.unitPrice = 4.89 OR STRICT pos.quantity != 1)");
+
+        // "self-pinning" effect of STRICT NOT
+        // all conditions get inlined, applied to the same document
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT pos.unitPrice != 4.89 AND STRICT pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "pos.unitPrice != 4.89 AND pos.quantity != 1");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "pos.unitPrice = 4.89 OR pos.quantity = 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "NOT (pos.unitPrice = 4.89 OR pos.quantity = 1)");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT NOT (pos.unitPrice = 4.89 OR pos.quantity = 1)");
+
+        showExecution("pos.unitPrice > 4 AND pos.unitPrice != @pos.quantity");
+
+        showExecution("pos.unitPrice != 4.89 OR pos.quantity != 1");
+
+    }
+
+    @Test
+    void testBug2() {
+        assertQueryResult(list(19012), "pos.unitPrice = 4.99 AND pos.quantity = 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19016, 19017, 19018, 19019, 19020, 19021), "NOT (pos.unitPrice = 4.99 AND pos.quantity = 1)");
     }
 
     @Test
@@ -567,16 +629,15 @@ class SolrExpressionConverterComplexTest extends SolrTestBase {
                 (
                     node_type:profile
                     AND {!join from=main_id to=id v="node_type\\:pos\\
-                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:\\*"}
-                    AND NOT {!join from=main_id to=id v="node_type\\:pos\\
-                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:1"}
+                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ pos_quantity_i\\:\\*\\
+                \\ \\ \\ \\ \\ \\ \\ \\ AND\\ NOT\\ pos_quantity_i\\:1"}
                 )
 
                 ]>>>""", "STRICT pos.quantity != 1");
 
-        assertQueryResult(list(), "STRICT pos.quantity != 1");
+        assertQueryResult(list(19011, 19013, 19014, 19015, 19017), "STRICT pos.quantity != 1");
 
-        assertQueryResult(list(19012), "STRICT pos.quantity != 2");
+        assertQueryResult(list(19011, 19012, 19013, 19014, 19015, 19017), "STRICT pos.quantity != 2");
 
     }
 

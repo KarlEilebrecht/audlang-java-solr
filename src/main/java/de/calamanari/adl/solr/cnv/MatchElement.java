@@ -39,6 +39,16 @@ public interface MatchElement {
     String commonNodeType();
 
     /**
+     * Tells whether we should include the case that the corresponding nested or dependent document {@link #commonNodeType()} is missing should be included in
+     * the match result.
+     * <p>
+     * This flag has no relevance for match elements on the main document (cannot be absent).
+     * 
+     * @return if this match has a common node type and the missing document case should be included (match not present)
+     */
+    boolean isMissingDocumentIncluded();
+
+    /**
      * appends a pretty-formatted representation ({@link Object#toString()} by default) after adding indentation
      * 
      * @param sb to add the debug info

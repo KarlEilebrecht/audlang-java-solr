@@ -392,9 +392,20 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("\n\nBEFORE consolidateMatchTree: {}", root.toDebugString());
         }
+        MatchTreeElement res = null;
 
-        MatchTreeElement res = consolidateMatchTreeElementsRecursively(root, CombinedExpressionType.AND, Collections.emptyList());
-
+        if (root instanceof MatchWrapper matchWrapper) {
+            // this addresses a problem with a negation singleton with existence verification
+            // problem: if this occurs INSIDE a combined expression
+            // then it gets pinned by its companion (AND existence check). As a standalone, the companion is implicit
+            // and thus we don't pin causing a NOT ANY rather than a NOT.
+            // Here we derive the pinning from the match instruction
+            boolean pinned = (matchWrapper.isNegation() && matchWrapper.matchInstruction() != MatchInstruction.NEGATE);
+            res = adjustGroupingEligibility(matchWrapper, pinned);
+        }
+        else {
+            res = consolidateMatchTreeElementsRecursively(root, CombinedExpressionType.AND, Collections.emptyList());
+        }
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("\n\nAFTER consolidateMatchTree: {}", res.toDebugString());
         }
@@ -449,7 +460,91 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
             }
         }
         addPendingMatchElementAndClearGroup(cmb.combiType(), groupMembers, res);
+        addMissingSubDocumentMatchElements(cmb.combiType(), res, cmb.commonNodeType());
         return res;
+    }
+
+    /**
+     * Before re-combining the elements we must check whether any {@link NodeTypeMatchTreeElementGroup} require {@link MissingSubDocumentMatchElement} as
+     * companions.
+     * <p>
+     * This method adds companions if necessary.
+     * 
+     * @param combiType
+     * @param elements to be modified
+     * @param commonNodeType
+     */
+    private void addMissingSubDocumentMatchElements(CombinedExpressionType combiType, List<MatchElement> elements, String commonNodeType) {
+        if (!mainNodeType.equals(commonNodeType)) {
+            if (combiType == CombinedExpressionType.OR) {
+                addMissingSubDocumentMatchElementsToOr(elements);
+            }
+            else {
+                addMissingSubDocumentMatchElementsToAnd(elements, commonNodeType);
+            }
+        }
+    }
+
+    /**
+     * This method checks each {@link NodeTypeMatchTreeElementGroup} inside an OR and adds a {@link MissingSubDocumentMatchElement} <i>companion</i> if
+     * required.
+     * 
+     * @param orMembers
+     */
+    private void addMissingSubDocumentMatchElementsToOr(List<MatchElement> orMembers) {
+        List<MatchElement> temp = new ArrayList<>();
+        for (MatchElement mte : orMembers) {
+            temp.add(mte);
+            if (mte instanceof NodeTypeMatchTreeElementGroup group && !mainNodeType.equals(group.commonNodeType()) && group.isMissingDocumentIncluded()) {
+                MissingSubDocumentMatchElement msd = new MissingSubDocumentMatchElement(group.commonNodeType());
+                if (!temp.contains(msd) && !orMembers.contains(msd)) {
+                    temp.add(msd);
+                }
+            }
+        }
+        if (temp.size() > orMembers.size()) {
+            orMembers.clear();
+            orMembers.addAll(temp);
+        }
+    }
+
+    /**
+     * This method checks each {@link NodeTypeMatchTreeElementGroup} inside an AND and adds a {@link MissingSubDocumentMatchElement} <i>companion</i> if
+     * required.
+     * 
+     * @param andMembers
+     * @param commonNodeType indicates that all members are related to the same node type to allow for optimization
+     */
+    private void addMissingSubDocumentMatchElementsToAnd(List<MatchElement> andMembers, String commonNodeType) {
+        if (andMembers.size() > 1 && commonNodeType != null && andMembers.stream()
+                .allMatch(matchElement -> matchElement instanceof NodeTypeMatchTreeElementGroup && matchElement.isMissingDocumentIncluded())) {
+            MissingSubDocumentMatchElement msd = new MissingSubDocumentMatchElement(andMembers.get(0).commonNodeType());
+            CombinedMatchTreeElement cmbAnd = new CombinedMatchTreeElement(CombinedExpressionType.AND,
+                    andMembers.stream().map(MatchTreeElement.class::cast).toList());
+            CombinedMatchTreeElement cmbOr = new CombinedMatchTreeElement(CombinedExpressionType.OR, Arrays.asList(cmbAnd, msd));
+            andMembers.clear();
+            andMembers.add(cmbOr);
+        }
+        else {
+            List<MatchElement> temp = new ArrayList<>();
+            boolean modified = false;
+            for (MatchElement matchElement : andMembers) {
+                if (matchElement instanceof NodeTypeMatchTreeElementGroup group && !mainNodeType.equals(group.commonNodeType())
+                        && group.isMissingDocumentIncluded()) {
+                    modified = true;
+                    MissingSubDocumentMatchElement msd = new MissingSubDocumentMatchElement(group.commonNodeType());
+                    CombinedMatchTreeElement cmbOr = new CombinedMatchTreeElement(CombinedExpressionType.OR, Arrays.asList(group, msd));
+                    temp.add(cmbOr);
+                }
+                else {
+                    temp.add(matchElement);
+                }
+            }
+            if (modified) {
+                andMembers.clear();
+                andMembers.addAll(temp);
+            }
+        }
     }
 
     /**
@@ -467,6 +562,7 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
      * <p>
      * Finally, the pending group members list will be cleared
      * 
+     * @param combiType combination type (AND/OR)
      * @param groupMembers pending group members (all related to the same node type)
      * @param matchElements destination
      */
@@ -518,17 +614,17 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
      */
     private <T extends MatchWrapper> T adjustGroupingEligibility(T matchWrapper, boolean isPinnedSubDocument) {
 
-        // case I: It is a negation, only eligible if the surrounding conditions do not pin the document
-        if (!matchWrapper.commonNodeType().equals(mainNodeType) && matchWrapper.isNegation()) {
+        if (!isPinnedSubDocument && !matchWrapper.isNegation()) {
+            // not pinned and positive condition: eligible
+            return setGroupingEligibilityInternal(matchWrapper, true);
+        }
+        else if (!isPinnedSubDocument && matchWrapper.isNegation() && !matchWrapper.nodeType().equals(mainNodeType)) {
+            // not pinned and negative condition: not eligible (any)
             return setGroupingEligibilityInternal(matchWrapper, false);
         }
 
-        // case II: sub-document is not pinned, so we can safely group any conditions
-        if (!isPinnedSubDocument) {
-            return setGroupingEligibilityInternal(matchWrapper, true);
-        }
-
-        // case III: a match involving any field assignment marked multi-doc is NOT eligible for grouping
+        // now it depends on the multi-doc assignment whether we can group or not
+        // a match involving any field assignment marked multi-doc is NOT eligible for grouping
         ArgFieldAssignment assignmentLeft = ctx.getMappingConfig().lookupAssignment(matchWrapper.argName(), ctx);
         if (assignmentLeft.isMultiDoc()) {
             return setGroupingEligibilityInternal(matchWrapper, false);

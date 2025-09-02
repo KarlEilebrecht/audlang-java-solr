@@ -29,8 +29,8 @@ import de.calamanari.adl.CombinedExpressionType;
  * A {@link NodeTypeMatchTreeElementGroup} combines (AND/OR) conditions related to the <b>same node type</b> that can be executed together. Groups can avoid
  * unnecessary joins in case of fields from nested or dependent documents.
  * <p>
- * The grouping occurs <i>after</i> building the match tree on one particular level of the tree. Hence, a {@link NodeTypeMatchTreeElementGroup} is <i>not</i> a
- * {@link MatchTreeElement}. It is a potentially complex {@link MatchElement} to be applied to a single node type.
+ * The grouping occurs <i>after</i> building the match tree on one particular level of the tree. It is a potentially complex {@link MatchElement} to be applied
+ * to a single node type.
  * <p>
  * Instances are deeply immutable.
  * 
@@ -38,7 +38,7 @@ import de.calamanari.adl.CombinedExpressionType;
  * @param members at least two elements
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public record NodeTypeMatchTreeElementGroup(CombinedExpressionType combiType, List<MatchTreeElement> members) implements MatchElement {
+public record NodeTypeMatchTreeElementGroup(CombinedExpressionType combiType, List<MatchTreeElement> members) implements MatchTreeElement {
 
     /**
      * @param combiType combination type of the group members
@@ -93,6 +93,21 @@ public record NodeTypeMatchTreeElementGroup(CombinedExpressionType combiType, Li
     @Override
     public String commonNodeType() {
         return members.get(0).commonNodeType();
+    }
+
+    @Override
+    public boolean isMissingDocumentIncluded() {
+        if (combiType == CombinedExpressionType.AND) {
+            return members.stream().allMatch(MatchElement::isMissingDocumentIncluded);
+        }
+        else {
+            return members.stream().anyMatch(MatchElement::isMissingDocumentIncluded);
+        }
+    }
+
+    @Override
+    public boolean isGroupingEligible() {
+        return false;
     }
 
     /**

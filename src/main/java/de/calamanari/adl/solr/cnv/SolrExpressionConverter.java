@@ -850,6 +850,9 @@ public class SolrExpressionConverter extends AbstractCoreExpressionConverter<Sol
             case NodeTypeMatchTreeElementGroup group:
                 appendGroup(group, groupCombiType);
                 break;
+            case MissingSubDocumentMatchElement msd:
+                appendMissingSubDocumentMatch(msd, groupCombiType == CombinedExpressionType.OR);
+                break;
             default:
                 throw new IllegalArgumentException("Unexpected match element: " + matchElement);
             }
@@ -890,12 +893,66 @@ public class SolrExpressionConverter extends AbstractCoreExpressionConverter<Sol
             fqBuilder().openBrace();
             fqBuilder().appendFilterQuery(matchFilterFactory().createNodeTypeFilter(fqBuilder().getMainNodeType()));
         }
+        if (matchWrapper.matchInstruction() == MatchInstruction.NEGATE || !matchWrapper.isGroupingEligible()) {
+            appendDefaultNegation(matchWrapper, braced);
+        }
+        else {
+            appendStrictNegation(matchWrapper, braced);
+        }
+        if (braced) {
+            fqBuilder().closeBrace();
+        }
+
+    }
+
+    protected void appendStrictNegation(MatchWrapper matchWrapper, boolean braced) {
+
+        if (braced) {
+            fqBuilder().appendAND();
+        }
+
+        startJoinIfRequired(matchWrapper.nodeType());
+
+        if (matchWrapper.matchInstruction().requiresIsNotUnknownVerification()) {
+            appendIsNotUnknownFiltersPlain(matchWrapper);
+            fqBuilder().appendAND();
+        }
+
+        fqBuilder().appendNOT();
+        appendPlainMatch(matchWrapper);
+        endJoinIfOpen();
+    }
+
+    protected void appendDefaultNegation(MatchWrapper matchWrapper, boolean braced) {
         boolean haveIsNotUnknownSection = appendIsNotUnknownFiltersIfRequired(matchWrapper, braced);
         if (braced || haveIsNotUnknownSection) {
             fqBuilder().appendAND();
         }
         fqBuilder().appendNOT();
         appendPositiveMatch(matchWrapper);
+    }
+
+    protected void appendMissingSubDocumentMatch(MissingSubDocumentMatchElement msd, boolean braced) {
+
+        if (braced) {
+            fqBuilder().openBrace();
+            fqBuilder().appendFilterQuery(matchFilterFactory().createNodeTypeFilter(fqBuilder().getMainNodeType()));
+        }
+        if (braced) {
+            fqBuilder().appendAND();
+        }
+        fqBuilder().appendNOT();
+
+        String nodeType = msd.nodeType();
+        NodeTypeMetaInfo nodeTypeMetaInfo = getProcessContext().getMappingConfig().lookupNodeTypeMetaInfoByNodeType(nodeType);
+        if (nodeTypeMetaInfo.documentNature() == SolrDocumentNature.NESTED) {
+            fqBuilder().startNestedJoin(nodeType);
+        }
+        else {
+            fqBuilder().startDependentJoin(nodeType);
+        }
+        fqBuilder().appendFilterQuery(matchFilterFactory().createNodeTypeFilter(nodeType));
+        fqBuilder().endJoin();
         if (braced) {
             fqBuilder().closeBrace();
         }

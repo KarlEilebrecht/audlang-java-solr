@@ -135,6 +135,19 @@ public record CombinedMatchTreeElement(CombinedExpressionType combiType, List<Ma
     }
 
     @Override
+    public boolean isMissingDocumentIncluded() {
+        if (commonNodeType != null) {
+            if (combiType == CombinedExpressionType.AND) {
+                return childElements.stream().allMatch(MatchElement::isMissingDocumentIncluded);
+            }
+            else {
+                return childElements.stream().anyMatch(MatchElement::isMissingDocumentIncluded);
+            }
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "CombinedMatchTreeElement " + createDebugIndicator() + "[combiType=" + combiType + " " + createDebugNodeTypeInfo() + ", childElements="
                 + childElements + "]";
