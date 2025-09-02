@@ -34,5 +34,11 @@ All documents in Solr exist side-by-side, no matter if we are talking about the 
  * **isCollection**: The field can hold multiple values. This impacts the ability to compare fields.
  * **isMultiDoc**: See [Multi-doc](./multi-doc-concept.md).
 
+## NOT always translates to NOT ANY
 
+This rule applies to every field assignment no matter if it is marked *multi-doc* or not. This is sometimes inconvenient for the user, but it is an **essential requirement**.
+
+Given a condition `color = red` Audlang requires the two sets defined by `color=red` and `color != red` to be **disjoint**.
+
+Would we allow testing a negative condition on a particular sub-document *instance* rather than *any*, the sets above could *overlap*. Let's assume the field `color` sits on a nested document *layout* and for the profile `4711` exist two layouts, one with `color=red` and the other with `color=blue`. Testing on document instance level would mean that the query `color=red` returns `4711` but also `NOT color=red`. This is not only a cosmetic issue, it potentially compromises the whole expression logic behind the scenes.
 
