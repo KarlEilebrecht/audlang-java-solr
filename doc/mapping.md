@@ -463,7 +463,8 @@ AND (
         AND NOT {!join from=main_id to=id v="node_type\:pos\
 \ \ \ \ \ \ AND\ pos_invdate_dt\:\[2024\\\-04\\\-02T00\\\:00\\\:00Z\ TO\ \*\]"}
     )
-)```
+)
+```
 
 *What can we do if the user is interested in **any** invoice date?*
 
