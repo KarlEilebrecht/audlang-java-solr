@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 
 import org.apache.solr.common.SolrDocumentList;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -148,7 +148,7 @@ public class ConversionTestUtils {
     public static ObjectMapper createObjectMapper(boolean prettyPrint) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        objectMapper.setSerializationInclusion(Include.NON_NULL);
+        objectMapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
         if (prettyPrint) {
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             DefaultPrettyPrinter.Indenter indenter = new DefaultIndenter("    ", DefaultIndenter.SYS_LF);
