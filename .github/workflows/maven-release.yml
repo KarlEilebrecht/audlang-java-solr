@@ -50,8 +50,10 @@ jobs:
           git config user.name "GitHub Actions"      
 
     - name: Create Maven Release
-      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=${{ inputs.releaseVersion }} -DdevelopmentVersion=${{ inputs.developmentVersion }}
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVELOPMENT_VERSION
       env:
         # Runs with a personal access token for download and upload
         USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
         ACCESS_TOKEN: ${{ secrets.PAT_PKG_WRITE_TOKEN }}
+        RELEASE_VERSION: ${{ inputs.releaseVersion }}
+        DEVELOPMENT_VERSION: ${{ inputs.developmentVersion }}
