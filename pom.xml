@@ -3,7 +3,7 @@
 	<groupId>de.calamanari.adl</groupId>
 	<artifactId>audlang-java-solr</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<name>Audlang Java Solr</name>
 	<description>Audlang converter for Apache Solr query generation</description>
     <url>https://github.com/KarlEilebrecht/audlang-java-solr</url>
@@ -38,7 +38,7 @@
 		<developerConnection>
 			scm:git:https://github.com/KarlEilebrecht/audlang-java-solr.git</developerConnection>
 		<url>https://github.com/KarlEilebrecht/audlang-java-solr</url>
-		<tag>v1.1.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 
