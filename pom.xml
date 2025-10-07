@@ -46,12 +46,12 @@
 		<dependency>
 			<groupId>de.calamanari.adl</groupId>
 			<artifactId>audlang-spec</artifactId>
-			<version>1.0.5</version>
+			<version>1.1.0</version>
 		</dependency>
        <dependency>
             <groupId>de.calamanari.adl</groupId>
             <artifactId>audlang-java-core</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
        </dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -157,7 +157,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.14.1</version>
 				<configuration>
-					<release>21</release>
+					<release>25</release>
 				</configuration>
 			</plugin>
 			<plugin>

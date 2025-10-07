@@ -604,7 +604,7 @@ class MainDocumentConfigTest extends SolrTestBase {
     void testAutoMapping6() {
         // @formatter:off
         MainDocumentConfig config = MainDocumentConfig.forNodeType(NODE_TYPE_1)
-                                                          .autoMapped((nodeType, ami) -> new DefaultAutoMappingPolicy(nodeType, 
+                                                          .autoMapped((nodeType, _) -> new DefaultAutoMappingPolicy(nodeType, 
                                                                                         s -> s.startsWith("bool.") ? s.substring(5) : null,
                                                                                         BOOL, 
                                                                                         SOLR_BOOLEAN, 
@@ -1028,7 +1028,7 @@ class MainDocumentConfigTest extends SolrTestBase {
     @SuppressWarnings("java:S5778")
     void testAutoMapperNull() {
 
-        assertThrows(ConfigException.class, () -> MainDocumentConfig.forNodeType(NODE_TYPE_1).autoMapped((nodeType, lookup) -> null).get());
+        assertThrows(ConfigException.class, () -> MainDocumentConfig.forNodeType(NODE_TYPE_1).autoMapped((_, _) -> null).get());
 
     }
 

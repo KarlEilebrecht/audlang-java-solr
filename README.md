@@ -7,7 +7,7 @@ on the [Audlang Java Core Project](https://github.com/KarlEilebrecht/audlang-jav
 		<dependency>
 			<groupId>de.calamanari.adl</groupId>
 			<artifactId>audlang-java-solr</artifactId>
-			<version>1.0.0</version>
+			<version>1.1.0</version>
 		</dependency>
 ```
 

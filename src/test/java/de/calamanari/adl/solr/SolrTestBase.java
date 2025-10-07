@@ -111,7 +111,7 @@ public abstract class SolrTestBase {
             EmbeddedSolrServerUtils.feedDocuments(server, seedJsonFileName);
             testServer = server;
         }
-        catch (RuntimeException ex) {
+        catch (RuntimeException _) {
             server.close();
         }
 

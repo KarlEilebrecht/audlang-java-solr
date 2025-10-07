@@ -722,7 +722,7 @@ class SubDocumentConfigTest extends SolrTestBase {
         // @formatter:off
         SubDocumentConfig config = SubDocumentConfig.forNodeType(NODE_TYPE_1)
                                                     .nested()
-                                                    .autoMapped((nodeType, ami) -> new DefaultAutoMappingPolicy(nodeType, 
+                                                    .autoMapped((nodeType, _) -> new DefaultAutoMappingPolicy(nodeType, 
                                                                                         s -> s.startsWith("bool.") ? s.substring(5) : null,
                                                                                         BOOL, 
                                                                                         SOLR_BOOLEAN, 
@@ -925,7 +925,7 @@ class SubDocumentConfigTest extends SolrTestBase {
                                                     .dataField(FIELD_NAME_1, SOLR_STRING)
                                                         .mappedToArgName(ARG_NAME_1)
                                                     .autoMapped(s -> s.startsWith("int.") ? s.substring(4) + "_i" : null, null, null, true)
-                                                    .autoMapped((nodeType, ami) -> new DefaultAutoMappingPolicy(nodeType, 
+                                                    .autoMapped((nodeType, _) -> new DefaultAutoMappingPolicy(nodeType, 
                                                             s -> s.startsWith("bool.") ? s.substring(5) : null,
                                                             null, 
                                                             SOLR_BOOLEAN, 

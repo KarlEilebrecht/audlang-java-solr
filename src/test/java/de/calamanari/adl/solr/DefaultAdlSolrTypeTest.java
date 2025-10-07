@@ -84,7 +84,7 @@ class DefaultAdlSolrTypeTest {
 
         type1 = SOLR_STRING;
 
-        type2 = SOLR_STRING.withFormatter((argName, argValue, operator) -> argValue);
+        type2 = SOLR_STRING.withFormatter((_, argValue, _) -> argValue);
 
         assertNotEquals(type1, type2);
         assertNotEquals(type1.name(), type2.name());

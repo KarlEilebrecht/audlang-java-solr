@@ -139,13 +139,7 @@ public enum DefaultSolrFormatter implements ArgValueFormatter {
     public static String formatFloat(String argName, String argValue, MatchOperator operator) {
         String formatted = DefaultArgValueFormatter.DECIMAL.format(argName, argValue, operator);
 
-        float temp = 0;
-        try {
-            temp = Float.parseFloat(formatted);
-        }
-        catch (NumberFormatException ex) {
-            // unreachable since https://github.com/KarlEilebrecht/audlang-java-core/issues/33
-        }
+        float temp = Float.parseFloat(formatted);
 
         if (temp < (Float.MAX_VALUE * -1.0d) || temp > Float.MAX_VALUE) {
             throw new AdlFormattingException(String.format("Unable to format argName=%s, argValue=%s, operator=%s (value out of float range [%f, %f]).",
@@ -165,15 +159,7 @@ public enum DefaultSolrFormatter implements ArgValueFormatter {
      * @throws AdlFormattingException if the input does not match
      */
     public static String formatDouble(String argName, String argValue, MatchOperator operator) {
-        String formatted = DefaultArgValueFormatter.DECIMAL.format(argName, argValue, operator);
-
-        try {
-            Double.parseDouble(formatted);
-        }
-        catch (NumberFormatException ex) {
-            // unreachable since https://github.com/KarlEilebrecht/audlang-java-core/issues/33
-        }
-        return formatted;
+        return DefaultArgValueFormatter.DECIMAL.format(argName, argValue, operator);
     }
 
     /**
@@ -214,7 +200,7 @@ public enum DefaultSolrFormatter implements ArgValueFormatter {
             try {
                 return argValue.equals(sdf.format(sdf.parse(argValue)));
             }
-            catch (ParseException ex) {
+            catch (ParseException _) {
                 return false;
             }
         }
