@@ -19,11 +19,11 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.config.ConfigUtils.isValidSolrName;
-
 import de.calamanari.adl.cnv.tps.ConfigException;
 import de.calamanari.adl.solr.AdlSolrType;
 import de.calamanari.adl.solr.SolrFormatConstants;
+
+import static de.calamanari.adl.solr.config.ConfigUtils.isValidSolrName;
 
 /**
  * A {@link DataField} describes a single field in a solr document. Solr defines field characteristics (name/type, collection or not) <i>globally</i>, however,

@@ -19,15 +19,15 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
-import static de.calamanari.adl.solr.config.ConfigUtils.assertValidSolrName;
-
 import java.util.List;
 
 import de.calamanari.adl.ProcessContext;
 import de.calamanari.adl.cnv.tps.ArgMetaInfo;
 import de.calamanari.adl.cnv.tps.ArgMetaInfoLookup;
 import de.calamanari.adl.cnv.tps.LookupException;
+
+import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
+import static de.calamanari.adl.solr.config.ConfigUtils.assertValidSolrName;
 
 /**
  * A concrete {@link SolrMappingConfig} maps argNames to Solr-fields.

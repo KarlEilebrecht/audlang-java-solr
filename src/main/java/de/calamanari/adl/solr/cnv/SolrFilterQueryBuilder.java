@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.SolrFormatConstants.CLOSE_BRACE;
-import static de.calamanari.adl.solr.SolrFormatConstants.OPEN_BRACE;
-
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -35,6 +32,9 @@ import de.calamanari.adl.solr.SolrFilterQuery;
 import de.calamanari.adl.solr.SolrFormatConstants;
 import de.calamanari.adl.solr.SolrFormatUtils;
 import de.calamanari.adl.solr.SolrQueryField;
+
+import static de.calamanari.adl.solr.SolrFormatConstants.CLOSE_BRACE;
+import static de.calamanari.adl.solr.SolrFormatConstants.OPEN_BRACE;
 
 /**
  * The {@link SolrFilterQueryBuilder} combines atomic {@link SolrFilterQuery}s step by step to compose a single filter query string.

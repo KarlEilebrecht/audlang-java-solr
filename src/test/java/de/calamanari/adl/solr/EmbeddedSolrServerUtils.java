@@ -19,16 +19,6 @@
 
 package de.calamanari.adl.solr;
 
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_BOOLEAN;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DATE;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DOUBLE;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_FLOAT;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_LONG;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -62,6 +52,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.calamanari.adl.solr.config.MainDocumentConfig;
 import de.calamanari.adl.solr.config.SolrMappingConfig;
 import de.calamanari.adl.solr.config.SubDocumentConfig;
+
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_BOOLEAN;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DATE;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DOUBLE;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_FLOAT;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_LONG;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
 
 /**
  * Utilities for creating and feeding an embedded Solr server in the target directory of the maven project.<br>

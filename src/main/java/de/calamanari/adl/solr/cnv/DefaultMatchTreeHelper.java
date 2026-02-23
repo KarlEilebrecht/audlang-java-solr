@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_MATCH;
-import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_OR_EQ_MATCH;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,6 +36,9 @@ import de.calamanari.adl.irl.MatchExpression;
 import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.solr.SolrFormatUtils;
 import de.calamanari.adl.solr.config.ArgFieldAssignment;
+
+import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_MATCH;
+import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_OR_EQ_MATCH;
 
 /**
  * Default implementation of a {@link MatchTreeHelper}.

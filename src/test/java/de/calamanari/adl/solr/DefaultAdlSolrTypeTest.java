@@ -19,6 +19,19 @@
 
 package de.calamanari.adl.solr;
 
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.calamanari.adl.cnv.tps.AdlType;
+import de.calamanari.adl.cnv.tps.ArgValueFormatter;
+import de.calamanari.adl.cnv.tps.ConfigException;
+import de.calamanari.adl.cnv.tps.DefaultAdlType;
+import de.calamanari.adl.cnv.tps.DefaultArgValueFormatter;
+import de.calamanari.adl.cnv.tps.NativeTypeCaster;
+import de.calamanari.adl.cnv.tps.PassThroughTypeCaster;
+import de.calamanari.adl.irl.MatchOperator;
+
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.BOOL;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DECIMAL;
@@ -36,19 +49,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.calamanari.adl.cnv.tps.AdlType;
-import de.calamanari.adl.cnv.tps.ArgValueFormatter;
-import de.calamanari.adl.cnv.tps.ConfigException;
-import de.calamanari.adl.cnv.tps.DefaultAdlType;
-import de.calamanari.adl.cnv.tps.DefaultArgValueFormatter;
-import de.calamanari.adl.cnv.tps.NativeTypeCaster;
-import de.calamanari.adl.cnv.tps.PassThroughTypeCaster;
-import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

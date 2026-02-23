@@ -19,18 +19,18 @@
 
 package de.calamanari.adl.solr.cnv;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import de.calamanari.adl.irl.MatchExpression;
+import de.calamanari.adl.irl.MatchOperator;
+
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_GTE_AND_LTE_MATCH;
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_GTE_AND_LT_MATCH;
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_GT_AND_LTE_MATCH;
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_GT_AND_LT_MATCH;
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_MATCH;
 import static de.calamanari.adl.solr.cnv.MatchWrapperType.VALUE_OR_EQ_MATCH;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import de.calamanari.adl.irl.MatchExpression;
-import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * A {@link BetweenMatchWrapper} is an aggregation of two match wrappers representing a lower bound and an upper bound to match a field against.

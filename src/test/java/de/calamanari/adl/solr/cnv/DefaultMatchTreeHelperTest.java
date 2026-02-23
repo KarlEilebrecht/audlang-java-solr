@@ -19,16 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.assertEqualsIgnoreElementOrder;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.wrap;
-import static de.calamanari.adl.solr.cnv.MatchElementDebugUtils.createListDebugString;
-import static org.junit.Assert.assertSame;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +28,16 @@ import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.assertEqualsIgnoreElementOrder;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.wrap;
+import static de.calamanari.adl.solr.cnv.MatchElementDebugUtils.createListDebugString;
+import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

@@ -19,16 +19,16 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.CombinedExpressionType;
+
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

@@ -19,15 +19,15 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.cnv.tps.ConfigException;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

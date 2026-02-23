@@ -19,11 +19,6 @@
 
 package de.calamanari.adl.solr;
 
-import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
-import static org.junit.Assert.assertSame;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -48,6 +43,11 @@ import de.calamanari.adl.Flag;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.solr.cnv.SolrExpressionConverter;
 import de.calamanari.adl.solr.config.SolrMappingConfig;
+
+import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
+import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

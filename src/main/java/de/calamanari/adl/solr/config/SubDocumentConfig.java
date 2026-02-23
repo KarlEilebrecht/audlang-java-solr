@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
-import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,6 +34,9 @@ import de.calamanari.adl.cnv.tps.ConfigException;
 import de.calamanari.adl.cnv.tps.LookupException;
 import de.calamanari.adl.solr.config.ConfigBuilderInterfaces.SubDocumentConfigBuilder;
 import de.calamanari.adl.solr.config.ConfigBuilderInterfaces.SubDocumentSetNature;
+
+import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
+import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
 
 /**
  * A {@link SubDocumentConfig} describes a node type that is either a nested document inside the main document or a dependent document referencing the main

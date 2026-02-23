@@ -19,14 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.wrap;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -34,6 +26,14 @@ import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.matchTreeOf;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.wrap;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

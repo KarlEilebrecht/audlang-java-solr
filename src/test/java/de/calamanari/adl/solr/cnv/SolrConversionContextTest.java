@@ -19,14 +19,14 @@
 
 package de.calamanari.adl.solr.cnv;
 
+import org.junit.jupiter.api.Test;
+
 import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
 import static de.calamanari.adl.solr.cnv.ConversionTestUtils.wrap;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

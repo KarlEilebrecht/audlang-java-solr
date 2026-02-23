@@ -19,30 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.FormatUtils.appendSpaced;
-import static de.calamanari.adl.solr.SolrFormatConstants.AND;
-import static de.calamanari.adl.solr.SolrFormatConstants.ARGNAME_DUMMY;
-import static de.calamanari.adl.solr.SolrFormatConstants.ASTERISK;
-import static de.calamanari.adl.solr.SolrFormatConstants.CLOSE_BRACE;
-import static de.calamanari.adl.solr.SolrFormatConstants.COLON;
-import static de.calamanari.adl.solr.SolrFormatConstants.COMMA;
-import static de.calamanari.adl.solr.SolrFormatConstants.DOUBLE_QUOTES;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_EQUALS;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_GREATER_THAN;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_GREATER_THAN_OR_EQUALS;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_IF;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_LESS_THAN;
-import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_LESS_THAN_OR_EQUALS;
-import static de.calamanari.adl.solr.SolrFormatConstants.IF_VALUES_0_1;
-import static de.calamanari.adl.solr.SolrFormatConstants.INLINE_QUERY;
-import static de.calamanari.adl.solr.SolrFormatConstants.OPEN_BRACE;
-import static de.calamanari.adl.solr.SolrFormatConstants.OR;
-import static de.calamanari.adl.solr.SolrFormatUtils.appendCondition;
-import static de.calamanari.adl.solr.SolrFormatUtils.appendDateFieldAtMidnightToFrange;
-import static de.calamanari.adl.solr.SolrFormatUtils.appendFrangeHeader;
-import static de.calamanari.adl.solr.SolrFormatUtils.appendFrangeStartWithExistenceChecks;
-import static de.calamanari.adl.solr.SolrFormatUtils.escape;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -76,6 +52,30 @@ import de.calamanari.adl.solr.config.DataField;
 import de.calamanari.adl.solr.config.FilterField;
 import de.calamanari.adl.solr.config.NodeTypeMetaInfo;
 import de.calamanari.adl.solr.config.SolrMappingConfig;
+
+import static de.calamanari.adl.FormatUtils.appendSpaced;
+import static de.calamanari.adl.solr.SolrFormatConstants.AND;
+import static de.calamanari.adl.solr.SolrFormatConstants.ARGNAME_DUMMY;
+import static de.calamanari.adl.solr.SolrFormatConstants.ASTERISK;
+import static de.calamanari.adl.solr.SolrFormatConstants.CLOSE_BRACE;
+import static de.calamanari.adl.solr.SolrFormatConstants.COLON;
+import static de.calamanari.adl.solr.SolrFormatConstants.COMMA;
+import static de.calamanari.adl.solr.SolrFormatConstants.DOUBLE_QUOTES;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_EQUALS;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_GREATER_THAN;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_GREATER_THAN_OR_EQUALS;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_IF;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_LESS_THAN;
+import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_LESS_THAN_OR_EQUALS;
+import static de.calamanari.adl.solr.SolrFormatConstants.IF_VALUES_0_1;
+import static de.calamanari.adl.solr.SolrFormatConstants.INLINE_QUERY;
+import static de.calamanari.adl.solr.SolrFormatConstants.OPEN_BRACE;
+import static de.calamanari.adl.solr.SolrFormatConstants.OR;
+import static de.calamanari.adl.solr.SolrFormatUtils.appendCondition;
+import static de.calamanari.adl.solr.SolrFormatUtils.appendDateFieldAtMidnightToFrange;
+import static de.calamanari.adl.solr.SolrFormatUtils.appendFrangeHeader;
+import static de.calamanari.adl.solr.SolrFormatUtils.appendFrangeStartWithExistenceChecks;
+import static de.calamanari.adl.solr.SolrFormatUtils.escape;
 
 /**
  * {@link DefaultMatchFilterFactory} provides a standard implementation for translating atomic match expressions into Solr-queries.

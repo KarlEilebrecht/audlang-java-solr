@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
-import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -30,6 +27,9 @@ import de.calamanari.adl.ProcessContext;
 import de.calamanari.adl.cnv.tps.ArgMetaInfo;
 import de.calamanari.adl.cnv.tps.DefaultAdlType;
 import de.calamanari.adl.solr.DefaultAdlSolrType;
+
+import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
+import static de.calamanari.adl.solr.config.ConfigUtils.assertValidArgName;
 
 /**
  * This implementation is for testing and debugging, it returns a dummy main document for any valid argName

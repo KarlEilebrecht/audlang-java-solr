@@ -19,16 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.INTEGER;
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DATE;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -64,6 +54,16 @@ import de.calamanari.adl.solr.config.DataField;
 import de.calamanari.adl.solr.config.MainDocumentConfig;
 import de.calamanari.adl.solr.config.SolrMappingConfig;
 import de.calamanari.adl.solr.config.SubDocumentConfig;
+
+import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.INTEGER;
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DATE;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

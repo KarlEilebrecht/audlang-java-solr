@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.INTEGER;
-import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
-import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -39,6 +33,12 @@ import de.calamanari.adl.cnv.tps.ConfigException;
 import de.calamanari.adl.cnv.tps.DefaultAdlType;
 import de.calamanari.adl.cnv.tps.DefaultArgMetaInfoLookup;
 import de.calamanari.adl.solr.DefaultAdlSolrType;
+
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.INTEGER;
+import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
+import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

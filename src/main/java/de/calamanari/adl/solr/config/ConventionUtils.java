@@ -19,6 +19,12 @@
 
 package de.calamanari.adl.solr.config;
 
+import de.calamanari.adl.cnv.tps.AdlType;
+import de.calamanari.adl.cnv.tps.DefaultAdlType;
+import de.calamanari.adl.solr.AdlSolrType;
+import de.calamanari.adl.solr.DefaultAdlSolrType;
+import de.calamanari.adl.solr.SolrFormatConstants;
+
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.BOOL;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DECIMAL;
@@ -31,12 +37,6 @@ import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_FLOAT;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_LONG;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-
-import de.calamanari.adl.cnv.tps.AdlType;
-import de.calamanari.adl.cnv.tps.DefaultAdlType;
-import de.calamanari.adl.solr.AdlSolrType;
-import de.calamanari.adl.solr.DefaultAdlSolrType;
-import de.calamanari.adl.solr.SolrFormatConstants;
 
 /**
  * A couple of utility methods following common conventions.

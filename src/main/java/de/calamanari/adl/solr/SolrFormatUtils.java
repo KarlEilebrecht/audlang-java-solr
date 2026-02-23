@@ -19,6 +19,9 @@
 
 package de.calamanari.adl.solr;
 
+import de.calamanari.adl.cnv.tps.AdlType;
+import de.calamanari.adl.cnv.tps.DefaultAdlType;
+
 import static de.calamanari.adl.solr.SolrFormatConstants.CLOSE_BRACE;
 import static de.calamanari.adl.solr.SolrFormatConstants.COMMA;
 import static de.calamanari.adl.solr.SolrFormatConstants.DAY_IN_MILLISECONDS;
@@ -30,9 +33,6 @@ import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_MS;
 import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_MUL;
 import static de.calamanari.adl.solr.SolrFormatConstants.FUNC_SUB;
 import static de.calamanari.adl.solr.SolrFormatConstants.OPEN_BRACE;
-
-import de.calamanari.adl.cnv.tps.AdlType;
-import de.calamanari.adl.cnv.tps.DefaultAdlType;
 
 /**
  * Some additional utilities for formatting Solr-queries

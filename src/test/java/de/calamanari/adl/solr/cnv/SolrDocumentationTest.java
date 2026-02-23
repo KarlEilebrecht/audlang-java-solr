@@ -19,8 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
@@ -30,6 +28,8 @@ import org.slf4j.LoggerFactory;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.solr.EmbeddedSolrServerUtils;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

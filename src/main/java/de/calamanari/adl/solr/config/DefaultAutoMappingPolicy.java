@@ -19,11 +19,6 @@
 
 package de.calamanari.adl.solr.config;
 
-import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
-import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericArgType;
-import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericIsCollection;
-import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericSolrFieldType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +31,11 @@ import de.calamanari.adl.cnv.tps.ArgMetaInfoLookup;
 import de.calamanari.adl.cnv.tps.ConfigException;
 import de.calamanari.adl.solr.AdlSolrType;
 import de.calamanari.adl.solr.SolrFormatConstants;
+
+import static de.calamanari.adl.solr.config.ConfigUtils.assertContextNotNull;
+import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericArgType;
+import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericIsCollection;
+import static de.calamanari.adl.solr.config.ConventionUtils.determineGenericSolrFieldType;
 
 /**
  * The {@link DefaultAutoMappingPolicy} dynamically creates {@link ArgFieldAssignment} based on meta-information parsed from a given argName.

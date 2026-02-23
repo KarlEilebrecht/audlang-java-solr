@@ -19,18 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.CombinedExpressionType.AND;
-import static de.calamanari.adl.CombinedExpressionType.OR;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.exprList;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.DEFAULT;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +33,18 @@ import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
 import de.calamanari.adl.irl.NegationExpression;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.CombinedExpressionType.AND;
+import static de.calamanari.adl.CombinedExpressionType.OR;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.exprList;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.DEFAULT;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

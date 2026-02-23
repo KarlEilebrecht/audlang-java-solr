@@ -19,6 +19,15 @@
 
 package de.calamanari.adl.solr;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import org.junit.jupiter.api.Test;
+
+import de.calamanari.adl.cnv.tps.AdlFormattingException;
+import de.calamanari.adl.cnv.tps.ArgValueFormatter;
+import de.calamanari.adl.irl.MatchOperator;
+
 import static de.calamanari.adl.solr.DefaultSolrFormatter.SOLR_BOOLEAN;
 import static de.calamanari.adl.solr.DefaultSolrFormatter.SOLR_DATE;
 import static de.calamanari.adl.solr.DefaultSolrFormatter.SOLR_DOUBLE;
@@ -28,15 +37,6 @@ import static de.calamanari.adl.solr.DefaultSolrFormatter.SOLR_LONG;
 import static de.calamanari.adl.solr.DefaultSolrFormatter.SOLR_STRING;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.text.NumberFormat;
-import java.util.Locale;
-
-import org.junit.jupiter.api.Test;
-
-import de.calamanari.adl.cnv.tps.AdlFormattingException;
-import de.calamanari.adl.cnv.tps.ArgValueFormatter;
-import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

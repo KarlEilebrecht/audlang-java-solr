@@ -19,13 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
-import static org.junit.Assert.assertSame;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +30,13 @@ import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
 import de.calamanari.adl.irl.NegationExpression;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
+import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

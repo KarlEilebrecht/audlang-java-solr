@@ -19,13 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +33,13 @@ import de.calamanari.adl.solr.SolrFormatConstants;
 import de.calamanari.adl.solr.SolrTestBase;
 import de.calamanari.adl.solr.config.MainDocumentConfig;
 import de.calamanari.adl.solr.config.SolrMappingConfig;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

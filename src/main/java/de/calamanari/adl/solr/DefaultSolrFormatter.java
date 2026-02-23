@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.solr;
 
-import static de.calamanari.adl.solr.SolrFormatConstants.FALSE;
-import static de.calamanari.adl.solr.SolrFormatConstants.TRUE;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
@@ -33,6 +30,9 @@ import de.calamanari.adl.cnv.tps.DefaultArgValueFormatter;
 import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.solr.config.FilterField;
 import de.calamanari.adl.util.TriFunction;
+
+import static de.calamanari.adl.solr.SolrFormatConstants.FALSE;
+import static de.calamanari.adl.solr.SolrFormatConstants.TRUE;
 
 /**
  * The formatters in this enumeration define the default behavior when formatting values for Apache Solr.

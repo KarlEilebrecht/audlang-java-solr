@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.solr.config;
 
+import org.junit.jupiter.api.Test;
+
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.BOOL;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DATE;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.DECIMAL;
@@ -35,8 +37,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

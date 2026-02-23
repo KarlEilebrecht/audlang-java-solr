@@ -19,17 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.exprList;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.DEFAULT;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_BOTH_ARGS_HAVE_ANY_VALUE;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_LEFT_ARG_HAS_ANY_VALUE;
-import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_RIGHT_ARG_HAS_ANY_VALUE;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,6 +29,17 @@ import org.junit.jupiter.api.Test;
 import de.calamanari.adl.irl.MatchExpression;
 import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.solr.SolrTestBase;
+
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.exprList;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.DEFAULT;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_BOTH_ARGS_HAVE_ANY_VALUE;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_LEFT_ARG_HAS_ANY_VALUE;
+import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE_VERIFY_RIGHT_ARG_HAS_ANY_VALUE;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

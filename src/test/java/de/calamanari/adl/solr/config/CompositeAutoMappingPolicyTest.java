@@ -19,6 +19,15 @@
 
 package de.calamanari.adl.solr.config;
 
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import de.calamanari.adl.cnv.tps.ArgMetaInfo;
+import de.calamanari.adl.cnv.tps.ConfigException;
+import de.calamanari.adl.cnv.tps.DefaultAdlType;
+import de.calamanari.adl.solr.DefaultAdlSolrType;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -32,15 +41,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
-
-import de.calamanari.adl.cnv.tps.ArgMetaInfo;
-import de.calamanari.adl.cnv.tps.ConfigException;
-import de.calamanari.adl.cnv.tps.DefaultAdlType;
-import de.calamanari.adl.solr.DefaultAdlSolrType;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

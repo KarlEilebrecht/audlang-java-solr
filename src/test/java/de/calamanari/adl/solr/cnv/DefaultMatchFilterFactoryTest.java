@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.solr.cnv;
 
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
-import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,6 +41,12 @@ import de.calamanari.adl.solr.SolrFilterQuery;
 import de.calamanari.adl.solr.SolrQueryField;
 import de.calamanari.adl.solr.SolrTestBase;
 import de.calamanari.adl.solr.config.DataField;
+
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
+import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
