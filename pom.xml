@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.calamanari.adl</groupId>
 	<artifactId>audlang-java-solr</artifactId>
@@ -6,29 +8,32 @@
 	<version>1.1.1-SNAPSHOT</version>
 	<name>Audlang Java Solr</name>
 	<description>Audlang converter for Apache Solr query generation</description>
-    <url>https://github.com/KarlEilebrecht/audlang-java-solr</url>
+	<url>https://github.com/KarlEilebrecht/audlang-java-solr</url>
 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<solr.version>10.0.0</solr.version>
+		<lucene.version>10.3.2</lucene.version>
+		<glassfish.version>5.0.0-M1</glassfish.version>
+		<jackson.version>2.21.2</jackson.version>
 	</properties>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
-	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name> 
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
 	<developers>
-	    <developer>
-	        <name>Karl Eilebrecht</name>
-	        <email>Karl.Eilebrecht@calamanari.de</email>
-	        <organization>KarlEilebrecht</organization>
-	    </developer>
+		<developer>
+			<name>Karl Eilebrecht</name>
+			<email>Karl.Eilebrecht@calamanari.de</email>
+			<organization>KarlEilebrecht</organization>
+		</developer>
 	</developers>
 
 
@@ -48,15 +53,20 @@
 			<artifactId>audlang-spec</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-       <dependency>
-            <groupId>de.calamanari.adl</groupId>
-            <artifactId>audlang-java-core</artifactId>
-            <version>1.2.0</version>
-       </dependency>
+		<dependency>
+			<groupId>de.calamanari.adl</groupId>
+			<artifactId>audlang-java-core</artifactId>
+			<version>1.2.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-runtime</artifactId>
 			<version>4.13.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -70,16 +80,13 @@
 			<version>2.1.0-alpha1</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- test dependencies below -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>2.1.0-alpha1</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.21.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -105,9 +112,23 @@
 			<version>5.23.0</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Additional dependencies required for Solr 10 embedded testing -->
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
+			<version>${solr.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj-streaming</artifactId>
+			<version>${solr.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj-zookeeper</artifactId>
 			<version>${solr.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -121,7 +142,145 @@
 					<groupId>org.apache.logging.log4j</groupId>
 					<artifactId>log4j-slf4j2-impl</artifactId>
 				</exclusion>
-			</exclusions>			
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-api</artifactId>
+			<version>1.60.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-sdk-metrics</artifactId>
+			<version>1.60.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-prometheus</artifactId>
+			<version>1.60.1-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry.instrumentation</groupId>
+			<artifactId>opentelemetry-runtime-telemetry-java17</artifactId>
+			<version>2.26.0-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analysis-common</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analysis-phonetic</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analysis-kuromoji</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analysis-nori</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queries</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-spatial-extras</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-suggest</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-join</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-highlighter</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-misc</artifactId>
+			<version>${lucene.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${glassfish.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${glassfish.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${glassfish.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.carrotsearch</groupId>
+			<artifactId>hppc</artifactId>
+			<version>0.10.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>3.2.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.6.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-cbor</artifactId>
+			<version>${jackson.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -134,7 +293,7 @@
 					<version>5.5.0.6356</version>
 				</plugin>
 			</plugins>
-		</pluginManagement>	
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -150,7 +309,7 @@
 							<goal>jar</goal>
 						</goals>
 					</execution>
-				</executions>				
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -223,18 +382,18 @@
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
-		    <plugin>
-		        <groupId>org.simplify4u.plugins</groupId>
-		        <artifactId>sign-maven-plugin</artifactId>
-		        <version>1.1.0</version>
-		        <executions>
-		            <execution>
-		                <goals>
-		                    <goal>sign</goal>
-		                </goals>
-		            </execution>
-		        </executions>
-		    </plugin>			
+			<plugin>
+				<groupId>org.simplify4u.plugins</groupId>
+				<artifactId>sign-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
@@ -249,7 +408,8 @@
 			<id>github</id>
 			<distributionManagement>
 				<repository>
-                    <!-- This matches the ID in the settings.xml to find the credentials -->				
+					<!-- This matches the ID in the settings.xml to find the
+					credentials -->
 					<id>audlang-java-solr</id>
 					<name>GitHub KarlEilebrecht Apache Maven Packages</name>
 					<url>
@@ -263,24 +423,25 @@
 		<profile>
 			<id>mavenCentral</id>
 			<build>
-			    <plugins>
-			        <plugin>
-			          <groupId>org.sonatype.central</groupId>
-			          <artifactId>central-publishing-maven-plugin</artifactId>
-			          <version>0.10.0</version>
-			          <extensions>true</extensions>
-			          <configuration>
-			             <publishingServerId>central</publishingServerId>
-			             <autoPublish>true</autoPublish>
-			          </configuration>
-			        </plugin>
-			    </plugins>
-			</build>			
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.10.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<publishingServerId>central</publishingServerId>
+							<autoPublish>true</autoPublish>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 			<distributionManagement>
 				<repository>
 					<id>central</id>
 					<name>Maven Central Repository OSSRH</name>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+					<url>
+						https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 			</distributionManagement>
 		</profile>

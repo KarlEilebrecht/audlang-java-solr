@@ -19,6 +19,8 @@
     <logger name="org.apache.solr" level="ERROR"/>
 
     <logger name="org.apache.lucene" level="ERROR"/>
+    
+    <logger name="io.opentelemetry.sdk.metrics" level="ERROR"/>
 
 
     <root level="INFO">
