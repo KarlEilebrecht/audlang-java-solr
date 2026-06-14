@@ -249,8 +249,8 @@ public class ConfigValidationUtils {
                     documentNature, documentFilters, argFieldMap, subDocumentConfigs, f, collectedMappings));
         }
         if (subDocumentConfigs != null) {
-            subDocumentConfigs.stream().forEach(sdc -> validateCollectFieldTypeMappings(sdc.nodeType(), sdc.documentNature(), sdc.documentFilters(),
-                    sdc.argFieldMap(), null, collectedMappings));
+            subDocumentConfigs.forEach(sdc -> validateCollectFieldTypeMappings(sdc.nodeType(), sdc.documentNature(), sdc.documentFilters(), sdc.argFieldMap(),
+                    null, collectedMappings));
         }
     }
 

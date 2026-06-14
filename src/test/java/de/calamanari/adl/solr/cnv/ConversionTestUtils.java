@@ -62,8 +62,8 @@ import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_DATE;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -443,7 +443,7 @@ public class ConversionTestUtils {
 
     public static void assertEqualsIgnoreElementOrder(MatchElement left, MatchElement right) {
 
-        assertTrue(String.format("%s was not effectively equal to: %s", left, right), equalsIgnoreElementOrder(left, right));
+        assertTrue(equalsIgnoreElementOrder(left, right), String.format("%s was not effectively equal to: %s", left, right));
 
     }
 
@@ -475,7 +475,7 @@ public class ConversionTestUtils {
         assertEquals(expected.size(), given.size(), String.format("Expected: %s, found: %s of different size", expected, given));
 
         for (Object expectedElement : expected) {
-            assertTrue(String.format("Expected: %s, found: %s, missing: %s", expected, given, expectedElement), given.contains(expectedElement));
+            assertTrue(given.contains(expectedElement), String.format("Expected: %s, found: %s, missing: %s", expected, given, expectedElement));
         }
 
     }

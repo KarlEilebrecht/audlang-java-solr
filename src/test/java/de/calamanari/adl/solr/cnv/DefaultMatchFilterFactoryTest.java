@@ -44,9 +44,9 @@ import de.calamanari.adl.solr.config.DataField;
 
 import static de.calamanari.adl.solr.cnv.ConversionTestUtils.createDryTestContext;
 import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

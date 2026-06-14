@@ -113,7 +113,7 @@ public class IsNotUnknownPropagator {
             requiredIsNotUnknownsArgNames.put(expression, req);
             break;
         case CombinedExpression cmbAnd when cmbAnd.combiType() == CombinedExpressionType.AND:
-            cmbAnd.childExpressions().stream().forEach(this::findRequiredIsNotUnknownsBottomUp);
+            cmbAnd.childExpressions().forEach(this::findRequiredIsNotUnknownsBottomUp);
             cmbAnd.childExpressions().stream().map(this::lookupRequiredIsNotUnknowns).flatMap(Set::stream).forEach(req::add);
             requiredIsNotUnknownsArgNames.put(expression, req);
             argNamesInNegations.put(expression,
@@ -151,7 +151,7 @@ public class IsNotUnknownPropagator {
      * @return intersection of the is-not-unknowns of all or-members
      */
     private Set<String> findIsNotUnknownsRequiredByAllOrMembers(CombinedExpression cmbOr) {
-        cmbOr.childExpressions().stream().forEach(this::findRequiredIsNotUnknownsBottomUp);
+        cmbOr.childExpressions().forEach(this::findRequiredIsNotUnknownsBottomUp);
         Set<String> reqByAllOrMembers = new HashSet<>();
         for (CoreExpression orMember : cmbOr.childExpressions()) {
             Set<String> reqByCurrentOrMember = lookupRequiredIsNotUnknowns(orMember);

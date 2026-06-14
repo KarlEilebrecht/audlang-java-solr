@@ -26,8 +26,8 @@ import org.slf4j.LoggerFactory;
 import de.calamanari.adl.irl.CoreExpression;
 
 import static de.calamanari.adl.cnv.StandardConversions.parseCoreExpression;
-import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

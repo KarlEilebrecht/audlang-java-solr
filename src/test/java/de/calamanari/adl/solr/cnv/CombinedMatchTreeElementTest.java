@@ -40,11 +40,11 @@ import static de.calamanari.adl.solr.cnv.ConversionTestUtils.expr;
 import static de.calamanari.adl.solr.cnv.ConversionTestUtils.exprList;
 import static de.calamanari.adl.solr.cnv.MatchInstruction.DEFAULT;
 import static de.calamanari.adl.solr.cnv.MatchInstruction.NEGATE;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

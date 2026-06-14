@@ -37,11 +37,11 @@ import static de.calamanari.adl.cnv.tps.DefaultAdlType.INTEGER;
 import static de.calamanari.adl.cnv.tps.DefaultAdlType.STRING;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_INTEGER;
 import static de.calamanari.adl.solr.DefaultAdlSolrType.SOLR_STRING;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
