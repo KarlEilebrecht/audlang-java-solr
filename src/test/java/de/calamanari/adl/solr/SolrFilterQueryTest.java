@@ -22,6 +22,7 @@ package de.calamanari.adl.solr;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -196,7 +197,7 @@ class SolrFilterQueryTest {
 
         Set<SolrConditionType> conditionTypesTemp = new HashSet<>(conditionTypes);
         List<SolrConditionType> expectedConditionTypes = new ArrayList<>(conditionTypesTemp);
-        Collections.sort(expectedConditionTypes);
+        expectedConditionTypes.sort(Comparator.naturalOrder());
 
         assertEquals(expectedConditionTypes, sfq.conditionTypes());
     }
