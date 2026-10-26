@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -82,7 +83,7 @@ public record SolrQueryDefinition(String mainQueryString, List<SolrFilterQuery> 
         }
         else {
             List<SolrFilterQuery> temp = new ArrayList<>(filterQueries);
-            Collections.sort(temp);
+            temp.sort(Comparator.naturalOrder());
             this.filterQueries = Collections.unmodifiableList(temp);
         }
         this.uniqueKeyFieldName = uniqueKeyFieldName == null ? SolrFormatConstants.DEFAULT_UNIQUE_KEY_FIELD_NAME : uniqueKeyFieldName;

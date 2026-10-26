@@ -21,7 +21,7 @@ package de.calamanari.adl.solr;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,7 +60,7 @@ class EmbeddedSolrServerUtilsTest extends SolrTestBase {
         List<Integer> ids = results.stream().map(e -> e.getFieldValue("id")).map(String::valueOf).map(Integer::valueOf)
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        Collections.sort(ids);
+        ids.sort(Comparator.naturalOrder());
 
         assertEquals(ids, EmbeddedSolrServerUtils.queryIntIdsSorted(testServer, "node_type:profile"));
 

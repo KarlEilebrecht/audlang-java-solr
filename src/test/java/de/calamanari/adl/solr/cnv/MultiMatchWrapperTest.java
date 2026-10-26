@@ -22,6 +22,7 @@ package de.calamanari.adl.solr.cnv;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -102,7 +103,7 @@ class MultiMatchWrapperTest extends SolrTestBase {
             MultiMatchWrapper wrapper = new MultiMatchWrapper(nodeType, members, matchInstruction, isGroupingEligible);
 
             List<MatchExpression> expectedMembers = new ArrayList<>(members);
-            Collections.sort(expectedMembers);
+            expectedMembers.sort(Comparator.naturalOrder());
 
             assertEquals(nodeType, wrapper.nodeType());
             assertEquals(nodeType, wrapper.commonNodeType());

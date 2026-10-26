@@ -56,12 +56,12 @@ public class SolrConversionContext implements ConversionContext {
     /**
      * child elements, members of AND/OR filled bottom-up during conversion
      */
-    private List<MatchTreeElement> childResultElements = new ArrayList<>();
+    private final List<MatchTreeElement> childResultElements = new ArrayList<>();
 
     /**
      * argNames which don't require additional IS NOT UNKNOWN checks because the their IS-UNKNOWN-state is pinned earlier (upward) in the expression
      */
-    private Set<String> pinnedIsUnknownArgNames = new HashSet<>();
+    private final Set<String> pinnedIsUnknownArgNames = new HashSet<>();
 
     /**
      * @return true if we are currently processing a negated match

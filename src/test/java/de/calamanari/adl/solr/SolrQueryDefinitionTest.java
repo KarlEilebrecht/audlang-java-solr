@@ -22,6 +22,7 @@ package de.calamanari.adl.solr;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -142,7 +143,7 @@ class SolrQueryDefinitionTest {
 
         if (filterQueries != null && !filterQueries.isEmpty()) {
             List<SolrFilterQuery> temp = new ArrayList<>(filterQueries);
-            Collections.sort(temp);
+            temp.sort(Comparator.naturalOrder());
             assertEquals(temp, sqd.filterQueries());
             Set<String> nodeTypesInDef = new TreeSet<>();
             for (SolrFilterQuery fq : filterQueries) {

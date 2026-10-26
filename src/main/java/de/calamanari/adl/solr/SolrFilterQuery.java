@@ -62,7 +62,7 @@ public record SolrFilterQuery(String queryString, List<SolrQueryField> fields, L
         tempConditions.addAll(conditionTypes);
 
         List<SolrQueryField> tempFields = new ArrayList<>(fields);
-        Collections.sort(tempFields, Comparator.comparing(SolrQueryField::nodeType).thenComparing(SolrQueryField::fieldName));
+        tempFields.sort(Comparator.comparing(SolrQueryField::nodeType).thenComparing(SolrQueryField::fieldName));
 
         // remove any surrounding whitespace
         this.queryString = queryString.trim();

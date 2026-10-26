@@ -701,10 +701,9 @@ public class DefaultMatchFilterFactory implements MatchFilterFactory {
         }
 
         if (LOGGER.isWarnEnabled() && !fieldLeft.fieldType().getBaseType().equals(fieldRight.fieldType().getBaseType())) {
-            LOGGER.warn(String.format(
-                    "Reference matching of different Solr-types may be unreliable, given: expression=%s, argNameLeft=%s (%s: %s), argNameRight=%s (%s: %s)",
+            LOGGER.warn("Reference matching of different Solr-types may be unreliable, given: expression={}, argNameLeft={} ({}: {}), argNameRight={} ({}: {})",
                     expression, argNameLeft, fieldLeft.fieldName(), fieldLeft.fieldType().getBaseType(), argNameRight, fieldRight.fieldName(),
-                    fieldRight.fieldType().getBaseType()));
+                    fieldRight.fieldType().getBaseType());
         }
 
         if (fieldLeft.isCollection() || fieldRight.isCollection()) {

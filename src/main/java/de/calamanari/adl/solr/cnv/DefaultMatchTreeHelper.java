@@ -752,7 +752,7 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
         singleMatchWrappers = singleMatchWrappers.stream().map(smw -> adjustGroupingEligibility(smw, pinnedSubDocuments.contains(smw.commonNodeType())))
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        Collections.sort(singleMatchWrappers, SMW_PREPARATION_ORDER_COMPARATOR);
+        singleMatchWrappers.sort(SMW_PREPARATION_ORDER_COMPARATOR);
         return singleMatchWrappers;
     }
 
@@ -902,7 +902,7 @@ public class DefaultMatchTreeHelper implements MatchTreeHelper {
         res.addAll(combinedMatchWrappers);
         res.addAll(remainingMatchWrappers);
         res.addAll(otherElements);
-        Collections.sort(res, mteCommonNodeTypeOrderComparator);
+        res.sort(mteCommonNodeTypeOrderComparator);
         return res;
     }
 
